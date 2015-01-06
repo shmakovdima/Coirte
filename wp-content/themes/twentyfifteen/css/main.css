@@ -273,6 +273,7 @@ input.search-form:hover {
   color: #fff;
   line-height: 24px;
   display: inline-block;
+  font-weight: bold;
 }
 
 .navbar-inverse .navbar-nav > li > a:hover{
@@ -2485,35 +2486,4 @@ shortcodes page css
 #bottom .widget {
   margin-bottom: 0;
 }
-
-#footer {
-  padding-top: 30px;
-  padding-bottom: 30px;
-  color: #fff;
-  background: #2e2e2e;
-}
-
-#footer a {
-  color: #fff;
-}
-
-#footer a:hover {
-  color: #26A69A;
-}
-
-#footer ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-#footer ul > li {
-  display: inline-block;
-  margin-left: 15px;
-}
-
-
-
-
-
 
