@@ -12,14 +12,14 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 600; 
+  font-weight: 400; 
   font-family: 'Open Sans', sans-serif;
-  color:#4e4e4e;
+  color: #26A69A;
 }
 
 h1{
   font-size: 36px;
-  color:#fff;
+  color: #26A69A;
 }
 
 h2{

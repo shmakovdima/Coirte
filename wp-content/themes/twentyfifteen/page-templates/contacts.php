@@ -9,114 +9,138 @@
 
 get_header(); ?>
 
-<div id="primary" class="site-content">
-	<div class="contacts" role="main">
-		<div class="content">
-			<h2>Контакты</h2>
-			<div id="map"></div>
+
+<!-- container -->
+	<div class="container">
+
+		
+			<?php if (function_exists('dimox_breadcrumbs')) dimox_breadcrumbs(); ?> 
+		
+
+		<div class="row">
 			
-			</div>
+			<!-- Article main content -->
+			<article class="col-sm-9 maincontent">
+				<header class="page-header">
+					<h1 class="page-title">Связь с нами</h1>
+				</header>	
+				<p>
+							<?php $posts = get_posts("category_name=textcontacts&orderby=date&numberposts=1&post_status=publish"); ?>
+							<?php if ($posts) : ?>
+							
+							<?php foreach ($posts as $post) : setup_postdata ($post); ?>
+							<?php echo $post->post_content; ?> 
+						
+							<?php endforeach; ?>
+							<?php endif; ?>	
+							<?php wp_reset_query(); ?>
+				</p>
+				<br>
+					<form>
+						<div class="row">
+							<div class="col-sm-4">
+								<input class="form-control" type="text" placeholder="Name">
+							</div>
+							<div class="col-sm-4">
+								<input class="form-control" type="text" placeholder="Email">
+							</div>
+							<div class="col-sm-4">
+								<input class="form-control" type="text" placeholder="Phone">
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-sm-12">
+								<textarea placeholder="Type your message here..." class="form-control" rows="9"></textarea>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-sm-6">
+								
+							</div>
+							<div class="col-sm-6 text-right">
+								<input class="btn btn-action" type="submit" value="Send message">
+							</div>
+						</div>
+					</form>
+					<?php echo do_shortcode('[contact-form-7 id="36" title="Контактная форма 1"]'); ?> 
 
+			</article>
+			<!-- /Article -->
+			
+			<!-- Sidebar -->
+			<aside class="col-sm-3 sidebar sidebar-right">
 
-<script type="text/javascript">
-        ymaps.ready(init);
-        var myMap;
-        function init () {
+				<div class="widget">
+					<?php $posts = get_posts("category_name=contactadress&orderby=date&numberposts=1&post_status=publish"); ?>
+					<?php if ($posts) : ?>
+					<h4>Наш адрес</h4>
+					<?php foreach ($posts as $post) : setup_postdata ($post); ?>
+					<address>
+					<?php echo $post->post_content; ?> 
+					</address>
+					<?php endforeach; ?>
+					<?php endif; ?>	
+					<?php wp_reset_query(); ?>
+					
+					<?php $posts = get_posts("category_name=contactphone&orderby=date&numberposts=1&post_status=publish"); ?>
+					<?php if ($posts) : ?>
+					<h4>Наш телефон</h4>
+					<?php foreach ($posts as $post) : setup_postdata ($post); ?>
+					<p class="adress_copy">
+					<?php echo $post->post_content; ?> 
+					</p>
+					<?php endforeach; ?>
+					<?php endif; ?>	
+					<?php wp_reset_query(); ?>
+					
+					<?php $posts = get_posts("category_name=contactmail&orderby=date&numberposts=1&post_status=publish"); ?>
+					<?php if ($posts) : ?>
+					<h4>Наша электронная почта</h4>
+					<?php foreach ($posts as $post) : setup_postdata ($post); ?>
+					<p class="adress_copy">
+					<?php echo $post->post_content; ?> 
+					</p>
+					<?php endforeach; ?>
+					<?php endif; ?>	
+					<?php wp_reset_query(); ?>
+					
+					<?php $posts = get_posts("category_name=contactskype&orderby=date&numberposts=1&post_status=publish"); ?>
+					<?php if ($posts) : ?>
+					<h4>Наш skype</h4>
+					<?php foreach ($posts as $post) : setup_postdata ($post); ?>
+					<p class="adress_copy">
+					<?php echo $post->post_content; ?> 
+					</p>
+					<?php endforeach; ?>
+					<?php endif; ?>	
+					<?php wp_reset_query(); ?>
+					
+					
+					
+				</div>
 
-    // Параметры карты можно задать в конструкторе.
-        myMap = new ymaps.Map(
-        // ID DOM-элемента, в который будет добавлена карта.
-        'map',
-        // Параметры карты.
-        {
-            // Географические координаты центра отображаемой карты.
-            center: [53.437561, 41.394202],
-            // Масштаб.
-            zoom: 8,
-           controls: ['zoomControl', 'typeSelector',  'fullscreenControl']
-        }
-        );
+			</aside>
+			<!-- /Sidebar -->
 
-         var myPlacemark = new ymaps.Placemark(
-
-            
-
-            [53.437561, 41.394202], {
-
-                balloonContentHeader: ' Наш адрес',
-
-                balloonContent: 'Тут адрес' 
-
-            } , { 
-
-                present:'islands#circleDotIcon',
-                zIndex: '25',
-
-                iconColor: 'blue'}       
-
-            );
-
- 
-
-            // Добавление метки на карту
-
-            myMap.geoObjects.add(myPlacemark);
-
-           
-
-        }
-
-    
-</script>
 		</div>
+	</div>	<!-- /container -->
+	<?php $posts = get_posts("category_name=contactadress&orderby=date&numberposts=1&post_status=publish"); ?>
+	<?php if ($posts) : ?>
+	<section class="container-full top-space">
+		<div id="map"></div>
+	</section>
 
-
-	</div>
-
-<div class="contact_form">
-	<div class="content">
-        <?php while ( have_posts() ) : the_post(); ?>
-                <?php get_template_part( 'content', 'page' ); ?>
-        <?php endwhile; // end of the loop. ?>
-		<div class="left_block">
-         
-
-            <?php $posts = get_posts ("category_name=adress&orderby=date"); ?>
-            <?php if ($posts) : ?>
-            <?php foreach ($posts as $post) : setup_postdata ($post); ?>
-                <h3 class="cont"><?php
-                    $text = get_the_content();
-                    echo $text;
-
-                ?></h3>
-                
-            <?php endforeach; ?>
-            <?php endif; ?>
-
-            <?php $posts = get_posts ("category_name=contactsdata&orderby=date"); ?>
-            <?php if ($posts) : ?>
-            <?php foreach ($posts as $post) : setup_postdata ($post); ?>
-                <span class="cont"><?php the_title(); ?></span>
+<!-- Google Maps -->
+<script src="https://maps.googleapis.com/maps/api/js?key=&amp;sensor=false&amp;extension=.js"></script> 
+<script src="<?php echo get_template_directory_uri(); ?>/js/google-map.js"></script>
+	<?php endif; ?>	
+	<?php wp_reset_query(); ?>
 
 
 
-                <?php the_content(); ?>
-            <?php endforeach; ?>
-            <?php endif; ?>
 
-            
-          
-        </div>
-        <?php wp_reset_postdata(); ?>
-
-        
-	</div>
-
-        
-</div>
-</div>
-        </div>
-  </div>
 
 
 

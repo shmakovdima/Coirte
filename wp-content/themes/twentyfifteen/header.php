@@ -8,6 +8,7 @@
  * @subpackage Twenty_Fifteen
  * @since Twenty Fifteen 1.0
  */
+ 
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
 <head>
@@ -56,7 +57,8 @@
             				<?php echo $post->post_content; ?> 
 							</a></nobr>
 							<?php endforeach; ?>
-							<?php endif; ?>							
+							<?php endif; ?>	
+							<?php wp_reset_query(); ?>
 							</p></div>
                     </div>
                     <div class="col-sm-6 col-xs-8">
@@ -72,6 +74,7 @@
 							<?php endforeach; ?>
 							<i class="fa fa-skype"></i></a></li> 
 							<?php endif; ?>
+							<?php wp_reset_query(); ?>
 								
                                
 							<!-- Facebook link -->
@@ -83,6 +86,7 @@
 							<?php endforeach; ?>
 							<i class="fa fa-facebook"></i></a></li> 
 							<?php endif; ?>
+							<?php wp_reset_query(); ?>
                           
 								
 							<!-- Twitter link -->
@@ -94,6 +98,7 @@
 							<?php endforeach; ?>
 							<i class="fa fa-twitter"></i></a></li> 
 							<?php endif; ?>
+							<?php wp_reset_query(); ?>
                                 
 							
 							<!-- VK link -->
@@ -105,9 +110,7 @@
 							<?php endforeach; ?>
 							<i class="fa fa-vk"></i></a></li> 
 							<?php endif; ?>
-								
-								
-								
+							<?php wp_reset_query(); ?>	
                             </ul>
                             <div class="search">
                                 <form role="form" role="search" method="get" class="search-form">
@@ -157,7 +160,7 @@
         </nav><!--/nav-->
 		
     </header><!--/header-->
-<div id="page" class="hfeed site">
+
 	
 	
 	<div id="content" class="site-content">

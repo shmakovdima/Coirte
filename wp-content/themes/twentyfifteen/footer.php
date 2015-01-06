@@ -10,9 +10,9 @@
  */
 ?>
 
-	</div><!-- .site-content -->
 
-<footer id="footer" class="top-space site-footer" role="contentinfo">
+
+<footer id="footer" class="site-footer" role="contentinfo">
 
 		<div class="footer1">
 			<div class="container">
@@ -34,7 +34,7 @@
 							</a></nobr>
 							<?php endforeach; ?>
 							<?php endif; ?>
-							<br>
+							
 							
 							
 							<!-- Вывод почтового ящика-->
@@ -42,19 +42,33 @@
 							
 							<?php $posts = get_posts("category_name=contactmail&orderby=date&numberposts=1&post_status=publish"); ?>
 							<?php if ($posts) : ?>
+							<br>
 							<nobr>
 							<i class="fa fa-envelope-o"></i>
 							<?php foreach ($posts as $post) : setup_postdata ($post); ?>
 							
 								
 							<a href="mailto:<?php echo str_replace( array(''),'',$post->post_content); ?>"> 
-							
             				<?php echo $post->post_content; ?> 
-							
 							<?php endforeach; ?>
 								</a>
 							</nobr>
 							<?php endif; ?>
+							
+							<!-- Skype link -->
+							<?php $posts = get_posts("category_name=contactskype&orderby=date&numberposts=1&post_status=publish"); ?>
+							<?php if ($posts) : ?>
+							<br>
+							<nobr>
+							<i class="fa fa-skype footer_skype"></i>
+							<?php foreach ($posts as $post) : setup_postdata ($post); ?>							
+							<a href="skype:<?php echo str_replace( array(''),'',$post->post_content); ?>?call" title="Позвонить нам в skype">
+							<?php echo $post->post_content; ?> 
+							<?php endforeach; ?>
+							</a>
+							</nobr>
+							<?php endif; ?>
+								
 							<br>
 							<br>
 							<!-- Вывод адреса-->
@@ -68,9 +82,9 @@
 							
 								
 							
-							
+							<address>
             				<?php echo $post->post_content; ?> 
-							
+							</address>
 							<?php endforeach; ?>
 							
 							<?php endif; ?>
@@ -82,15 +96,7 @@
 						<h3 class="widget-title">Мы в социальных сетях</h3>
 						<div class="widget-body">
 							<p class="follow-me-icons">						
-								<!-- Skype link -->
-							<?php $posts = get_posts("category_name=contactskype&orderby=date&numberposts=1&post_status=publish"); ?>
-							<?php if ($posts) : ?>
-							<?php foreach ($posts as $post) : setup_postdata ($post); ?>							
-							<a href="skype:<?php echo str_replace( array(''),'',$post->post_content); ?>?call" title="Позвонить нам в skype">		
-							<?php endforeach; ?>
-							<i class="fa fa-skype fa-2 animation4s"></i></a>
-							<?php endif; ?>
-								
+						
 							<!-- Facebook link -->
 							<?php $posts = get_posts("category_name=fblink&orderby=date&numberposts=1&post_status=publish"); ?>
 							<?php if ($posts) : ?>
@@ -163,17 +169,14 @@
 		</div>
 
 	</footer>	
- 
-
-</div><!-- .site -->
-
-<!-- Yandex.Metrika counter -->
 	<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/bootstrap.min.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.prettyPhoto.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.isotope.min.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/main.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/wow.min.js"></script>
+
+<!-- Yandex.Metrika counter -->
 <script type="text/javascript">
 (function (d, w, c) {
     (w[c] = w[c] || []).push(function() {
