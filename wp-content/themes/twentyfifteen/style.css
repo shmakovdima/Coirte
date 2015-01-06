@@ -1,8 +1,64 @@
+
 * {
 	margin: 0;
 	padding: 0;
+	
 }
 
 html, body {
 	background: #f9f9f9;
 }
+
+input {
+	outline: none;
+}
+
+.fa-phone-square {
+	padding-right: 5px;
+}
+
+.top-number p, .top-number  a, .top-number a:hover, .top-number a:active {
+	white-space: nowrap;
+	color: #fff;
+	font-family: "Open Sans";
+}
+
+.top-number a:hover {
+	color:#26A69A;
+}
+
+.animation4s {
+	-webkit-transition:  all 0.4s;
+    -moz-transition:  all 0.4s;
+    -ms-transition:  all 0.4s;
+    -o-transition:  all 0.4s;
+    transition:  all 0.4s; 
+}
+
+input.search-form:hover {
+	background: white;
+	color: #222;
+}
+
+input.search-form {
+	border-radius: 3px;
+	color: #222;
+	margin: 0 5px;
+	margin-left: 10px;
+}
+
+
+
+input.search-form::-webkit-input-placeholder {
+  color: transparent;
+	font-family: "Open Sans";
+}
+
+input.search-form:hover::-webkit-input-placeholder{
+  color: #222;
+}
+
+.social-share {
+	min-width: 300px;
+}
+
