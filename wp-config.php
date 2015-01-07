@@ -14,6 +14,14 @@
  * @package WordPress
  */
 
+
+//Вырубание Contact form, где не надо
+define('WPCF7_LOAD_JS', false);
+define('WPCF7_LOAD_CSS', false);
+
+
+
+
 // ** Параметры MySQL: Эту информацию можно получить у вашего хостинг-провайдера ** //
 /** Имя базы данных для WordPress */
 define('DB_NAME', 'coirte_new');

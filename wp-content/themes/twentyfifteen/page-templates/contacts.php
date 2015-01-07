@@ -7,6 +7,11 @@
  * @since Twenty Fifteen 1.0
  */
 
+if ( function_exists( 'wpcf7_enqueue_scripts' ) ) {
+   wpcf7_enqueue_scripts();
+   wpcf7_enqueue_styles();
+}
+
 get_header(); ?>
 
 
