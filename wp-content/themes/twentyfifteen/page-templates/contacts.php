@@ -113,9 +113,6 @@ jQuery(function(){
 	<section class="container-full top-space">
 		<div id="map"></div>
 	</section>
-
-
-<script>sweetAlert("Oops...", "Something went wrong!", "error");</script>
 	<?php endif; ?>	
 	<?php wp_reset_query(); ?>
 

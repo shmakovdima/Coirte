@@ -69,6 +69,11 @@ jQuery(function($) {'use strict',
 	$("a[rel^='prettyPhoto']").prettyPhoto({
 		social_tools: false
 	});	
+					
+					
+	$(".form-control").focus(function(){
+		$(this).parent().find(".wpcf7-not-valid-tip").remove();
+	});
 });
 
 

@@ -35,9 +35,7 @@
     <link href="<?php echo get_template_directory_uri(); ?>/css/prettyPhoto.css" rel="stylesheet">
     <link href="<?php echo get_template_directory_uri(); ?>/css/main.css" rel="stylesheet">
     <link href="<?php echo get_template_directory_uri(); ?>/css/responsive.css" rel="stylesheet">
-	
-	
-	
+
 	<?php wp_head(); ?>
 </head>
 <body class="homepage"<?php body_class(); ?>>
@@ -137,7 +135,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html"><img src="<?php echo get_template_directory_uri(); ?>/images/logoA.png" width="185" alt="logo"></a>
+                    <a class="navbar-brand" href="<?php echo get_home_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/logoA.png" width="185" alt="logo"></a>
                 </div>
 				
                 <div class="collapse navbar-collapse navbar-right">

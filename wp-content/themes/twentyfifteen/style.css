@@ -216,6 +216,7 @@ input, textarea {
 .site-content input.form-control:focus, .site-content input.form-control:hover , .site-content textarea.form-control:focus{
 	border-color: 1px solid #26A69A!important;
 	outline-color:#26A69A!important;
+	
 }
 
 .btn {
@@ -225,7 +226,7 @@ border: 0 none;
 -webkit-border-radius: 3px;
 -moz-border-radius: 3px;
 border-radius: 3px;	
-color: white;
+color: white!important;
 background-color: #26A69A;
 }
 
@@ -233,3 +234,20 @@ background-color: #26A69A;
 	color: white;
 	opacity: .6;
 }
+
+.wpcf7-not-valid-tip+input {
+	background-color:#F27474!important;
+	color: white!important;
+}
+.wpcf7-not-valid-tip+input::-webkit-input-placeholder {
+	color: white!important;
+} 
+
+.wpcf7-display-none {
+	display: none!important;
+}
+
+.sweet-alert .icon.success .line {
+	 background-color: #26A69A!important;
+}
+
