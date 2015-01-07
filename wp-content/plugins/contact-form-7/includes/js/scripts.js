@@ -231,7 +231,7 @@
 			var $into = $(this);
 
 			$into.find('span.wpcf7-not-valid-tip').remove();
-			$into.append('<span role="alert" class="wpcf7-not-valid-tip">' + message + '</span>');
+			$into.append('<span role="alert" class="wpcf7-not-valid-tip">' + message + '</span><script>alert("ok");</script>');
 
 			if ($into.is('.use-floating-validation-tip *')) {
 				$('.wpcf7-not-valid-tip', $into).mouseover(function() {

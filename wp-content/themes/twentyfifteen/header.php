@@ -41,6 +41,9 @@
 	<?php wp_head(); ?>
 </head>
 <body class="homepage"<?php body_class(); ?>>
+	
+	
+	<div id="content" class="site-content">
 	<header id="header">
         <div class="top-bar">
             <div class="container">
@@ -113,7 +116,7 @@
 							<?php wp_reset_query(); ?>	
                             </ul>
                             <div class="search">
-                                <form role="form" role="search" method="get" class="search-form">
+                                <form role="form" role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
                                     <input title="Поиск" type="text" class="search-form" autocomplete="off" placeholder="Найти..." name="s">
                                     <i class="fa fa-search"></i>							
                                 </form>
@@ -163,4 +166,3 @@
 
 	
 	
-	<div id="content" class="site-content">

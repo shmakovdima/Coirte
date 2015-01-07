@@ -240,7 +240,7 @@ input.search-form{
 
 
 
-input.search-form:hover {
+input.search-form:hover, input.search-form:focus {
   width: 180px;
 }
 

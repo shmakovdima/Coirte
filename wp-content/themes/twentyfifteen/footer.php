@@ -10,8 +10,8 @@
  */
 ?>
 
-
-
+<div class="page-buffer"></div>
+</div>
 <footer id="footer" class="site-footer" role="contentinfo">
 
 		<div class="footer1">
