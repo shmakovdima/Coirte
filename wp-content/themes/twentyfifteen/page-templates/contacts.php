@@ -17,6 +17,13 @@ get_header(); ?>
 <script src="https://maps.googleapis.com/maps/api/js?key=&amp;sensor=false&amp;extension=.js"></script> 
 <script src="<?php echo get_template_directory_uri(); ?>/js/google-map.js"></script>
 <script src="<?php echo get_template_directory_uri(); ?>/js/sweet-alert.min.js"></script>
+<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.maskedinput-1.2.2.js"></script>
+<script type="text/javascript">
+jQuery(function(){
+    jQuery("#contact_phone").mask("+7 (999) 999-9999");
+});
+
+</script>
 <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/sweet-alert.css">
 
 <!-- container -->
@@ -43,34 +50,6 @@ get_header(); ?>
 							<?php wp_reset_query(); ?>
 				</p>
 				<br>
-					<form>
-						<div class="row">
-							<div class="col-sm-4">
-								<input class="form-control" type="text" placeholder="Name">
-							</div>
-							<div class="col-sm-4">
-								<input class="form-control" type="text" placeholder="Email">
-							</div>
-							<div class="col-sm-4">
-								<input class="form-control" type="text" placeholder="Phone">
-							</div>
-						</div>
-						<br>
-						<div class="row">
-							<div class="col-sm-12">
-								<textarea placeholder="Type your message here..." class="form-control" rows="9"></textarea>
-							</div>
-						</div>
-						<br>
-						<div class="row">
-							<div class="col-sm-6">
-								
-							</div>
-							<div class="col-sm-6 text-right">
-								<input class="btn btn-action" type="submit" value="Send message">
-							</div>
-						</div>
-					</form>
 					<?php echo do_shortcode('[contact-form-7 id="40" title="Заголовок"]'); ?> 
 
 			</article>
@@ -112,7 +91,6 @@ get_header(); ?>
 					<?php endforeach; ?>
 					<?php endif; ?>	
 					<?php wp_reset_query(); ?>
-					
 					<?php $posts = get_posts("category_name=contactskype&orderby=date&numberposts=1&post_status=publish"); ?>
 					<?php if ($posts) : ?>
 					<h4>Наш skype</h4>
@@ -122,10 +100,7 @@ get_header(); ?>
 					</p>
 					<?php endforeach; ?>
 					<?php endif; ?>	
-					<?php wp_reset_query(); ?>
-					
-					
-					
+					<?php wp_reset_query(); ?>	
 				</div>
 
 			</aside>

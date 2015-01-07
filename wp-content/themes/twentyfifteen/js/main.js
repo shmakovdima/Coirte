@@ -6,6 +6,8 @@ jQuery(function($) {'use strict',
 			interval: 8000
 		});
 	});
+					
+	
 
 
 	// accordian
@@ -68,3 +70,5 @@ jQuery(function($) {'use strict',
 		social_tools: false
 	});	
 });
+
+

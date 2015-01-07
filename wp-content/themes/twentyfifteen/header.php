@@ -26,7 +26,7 @@
 	
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-
+	<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.js"></script>
 	
 	<!-- core CSS -->
     <link href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.min.css" rel="stylesheet">

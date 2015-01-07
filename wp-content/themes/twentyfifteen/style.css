@@ -198,3 +198,38 @@ html, body {
   overflow: hidden;
   display: none;
   z-index: 2000; }
+
+
+textarea {
+	resize: none;
+	outline: none;
+}
+
+
+input, textarea {
+	 -webkit-transition:  all 0.4s;
+      -moz-transition:  all 0.4s;
+      -ms-transition:  all 0.4s;
+      -o-transition:  all 0.4s;
+      transition:  all 0.4s;
+}
+.site-content input.form-control:focus, .site-content input.form-control:hover , .site-content textarea.form-control:focus{
+	border-color: 1px solid #26A69A!important;
+	outline-color:#26A69A!important;
+}
+
+.btn {
+padding: 10px 40px;
+font-weight: bold;
+border: 0 none;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;	
+color: white;
+background-color: #26A69A;
+}
+
+.btn:hover {
+	color: white;
+	opacity: .6;
+}
