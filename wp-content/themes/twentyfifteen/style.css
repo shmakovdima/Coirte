@@ -166,3 +166,35 @@ html, body {
     height: 250px;
 }
 
+  .sweet-alert button {
+    background-color: #26A69A!important;
+    color: white;
+    border: none;
+    box-shadow: none;
+    font-size: 17px;
+    font-weight: 500;
+    border-radius: 5px;
+    padding: 10px 32px;
+    margin: 26px 5px 0 5px;
+    cursor: pointer;
+   -webkit-transition:  all 0.4s;
+      -moz-transition:  all 0.4s;
+      -ms-transition:  all 0.4s;
+      -o-transition:  all 0.4s;
+      transition:  all 0.4s; }
+
+.sweet-alert {
+  background-color: white;
+  font-family: 'Open Sans', sans-serif;
+  width: 478px;
+  padding: 25px;
+  border-radius: 5px;
+  text-align: center;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: -256px;
+  margin-top: -200px;
+  overflow: hidden;
+  display: none;
+  z-index: 2000; }

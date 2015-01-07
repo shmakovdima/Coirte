@@ -13,12 +13,14 @@ if ( function_exists( 'wpcf7_enqueue_scripts' ) ) {
 }
 
 get_header(); ?>
-
+<!-- Google Maps -->
+<script src="https://maps.googleapis.com/maps/api/js?key=&amp;sensor=false&amp;extension=.js"></script> 
+<script src="<?php echo get_template_directory_uri(); ?>/js/google-map.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/sweet-alert.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/sweet-alert.css">
 
 <!-- container -->
-	<div class="container">
-
-		
+	<div class="container">		
 			<?php if (function_exists('dimox_breadcrumbs')) dimox_breadcrumbs(); ?> 
 		
 
@@ -137,16 +139,10 @@ get_header(); ?>
 		<div id="map"></div>
 	</section>
 
-<!-- Google Maps -->
-<script src="https://maps.googleapis.com/maps/api/js?key=&amp;sensor=false&amp;extension=.js"></script> 
-<script src="<?php echo get_template_directory_uri(); ?>/js/google-map.js"></script>
+
+<script>sweetAlert("Oops...", "Something went wrong!", "error");</script>
 	<?php endif; ?>	
 	<?php wp_reset_query(); ?>
-
-
-
-
-
 
 
 <?php
