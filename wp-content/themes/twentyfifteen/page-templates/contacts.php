@@ -71,7 +71,7 @@ get_header(); ?>
 							</div>
 						</div>
 					</form>
-					<?php echo do_shortcode('[contact-form-7 id="36" title="Контактная форма 1"]'); ?> 
+					<?php echo do_shortcode('[contact-form-7 id="40" title="Заголовок"]'); ?> 
 
 			</article>
 			<!-- /Article -->
