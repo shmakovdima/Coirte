@@ -147,12 +147,30 @@
 					<div class="col-md-6 widget">
 						<div class="widget-body">
 							<p class="simplenav">
-								<a href="#">Home</a> | 
-								<a href="about.html">About</a> |
-								<a href="sidebar-right.html">Sidebar</a> |
-								<a href="contact.html">Contact</a> |
-								<b><a href="signup.html">Sign up</a></b>
+							<?php 
+
+							$menuParameters = array(
+								'menu' => 'footermenu',
+  								'container'       => false,
+  								'echo'            => false,
+  								'items_wrap'      => '%3$s',
+  								'depth'           => 0,
+								
+							);
+
+
+
+
+
+
+
+
+							echo strip_tags(wp_nav_menu($menuParameters), '<a>'); ?>
 							</p>
+							
+							
+							
+					
 						</div>
 					</div>
 

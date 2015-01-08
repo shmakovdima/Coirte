@@ -16,10 +16,11 @@
 	$( '.dropdown-toggle' ).click( function( e ) {
 		var _this = $( this );
 		e.preventDefault();
-		/*
+		
 		_this.toggleClass( 'toggle-on' );
 		_this.next( '.children, .sub-menu' ).toggleClass( 'toggled-on' );
 		_this.attr( 'aria-expanded', _this.attr( 'aria-expanded' ) === 'false' ? 'true' : 'false' );
+		/*
 		_this.html( _this.html() === screenReaderText.expand ? screenReaderText.collapse : screenReaderText.expand );
 		*/	
 	} );
@@ -133,6 +134,8 @@
 			$(this).addClass("dropdown");
 			$(this).find("a").eq(0).each(function(){
 				$(this).append('<b class="caret"></b>');
+				$(this).attr("data-toggle",'dropdown');
+
 			});
 		});
 		
@@ -144,7 +147,6 @@
 			$(this).addClass("active");
 		});
 		
-
 		
 		$(".current_page_item").each(function(){
 			$(this).addClass("active");

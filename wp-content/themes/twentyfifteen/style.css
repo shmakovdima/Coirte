@@ -256,3 +256,9 @@ background-color: #26A69A;
 	 background-color: #26A69A!important;
 }
 
+.simplenav a+a:before {
+	content: "|" ;
+	color: white!immportant;
+	padding-right: 4px;
+}
+
