@@ -198,6 +198,10 @@
   input.search-form:hover {
     width: 120px;
   }
+	
+  .form-control {
+	  margin-top: 10px;
+  }
 
   .navbar-nav > li {
     padding-bottom: 0;
