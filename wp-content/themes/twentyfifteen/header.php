@@ -39,8 +39,6 @@
 	<?php wp_head(); ?>
 </head>
 <body class="homepage"<?php body_class(); ?>>
-	
-	
 	<div id="content" class="site-content">
 	<header id="header">
         <div class="top-bar">
