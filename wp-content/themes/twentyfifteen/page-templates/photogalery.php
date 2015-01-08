@@ -24,7 +24,7 @@ get_header(); ?>
 		 <div class="post">
   		<h2 id="post-<?php the_ID(); ?>"><?php the_title();?></h2>
   		<div class="entrytext">
-   			<?php echo do_shortcode("[nggallery id=2 template=caption]"); ?>
+   			<?php echo do_shortcode($post->post_content); ?>
   		</div>
  		</div>
  		<?php endwhile; endif; ?>		
