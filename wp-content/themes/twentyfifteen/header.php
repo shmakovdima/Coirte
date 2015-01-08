@@ -136,25 +136,17 @@
                     <a class="navbar-brand" href="<?php echo get_home_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/logoA.png" width="185" alt="logo"></a>
                 </div>
 				
-                <div class="collapse navbar-collapse navbar-right">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="index.html">Home</a></li>
-                        <li><a href="about-us.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="blog-item.html">Blog Single</a></li>
-                                <li><a href="pricing.html">Pricing</a></li>
-                                <li><a href="404.html">404</a></li>
-                                <li><a href="shortcodes.html">Shortcodes</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="blog.html">Blog</a></li> 
-                        <li><a href="contact-us.html">Contact</a></li>                        
-                    </ul>
-                </div>
+                
+					
+					<?php wp_nav_menu(array(
+  						'menu' => 'mainmenu', // название меню, мы его писали в админке, в поле, скриншот которого, на картинке выше.
+  						'container' => 'nav', // контейнер для меню, по умолчанию 'div', в нашем случае указано 'nav', чтобы не создавать контейнер - пишем false.
+  						'container_class' => 'collapse navbar-collapse navbar-right', // класс для контейнера <div> или <nav>, если класс не нужен, ничего не пишем.
+  						'container_id' => '', // id для для контейнера <div> или <nav>, если класс не нужен, ничего не пишем.
+  						'menu_class' => 'nav navbar-nav', // класс для меню. этот класс добавится к тегу <ul>
+  						'menu_id' => '', // id для меню. этот id добавится к тегу <ul>
+					)); ?>
+		
             </div><!--/.container-->
         </nav><!--/nav-->
 		

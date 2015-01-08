@@ -16,10 +16,12 @@
 	$( '.dropdown-toggle' ).click( function( e ) {
 		var _this = $( this );
 		e.preventDefault();
+		/*
 		_this.toggleClass( 'toggle-on' );
 		_this.next( '.children, .sub-menu' ).toggleClass( 'toggled-on' );
 		_this.attr( 'aria-expanded', _this.attr( 'aria-expanded' ) === 'false' ? 'true' : 'false' );
 		_this.html( _this.html() === screenReaderText.expand ? screenReaderText.collapse : screenReaderText.expand );
+		*/	
 	} );
 
 	// Enable menu toggle for small screens.
@@ -107,7 +109,7 @@
 		scroll();
 	}
 
-	$( document ).ready( function() {
+	$(document).ready( function() {
 		$body          = $( document.body );
 		$window        = $( window );
 		$sidebar       = $( '#sidebar' ).first();
@@ -126,6 +128,29 @@
 		for ( var i = 1; i < 6; i++ ) {
 			setTimeout( resizeAndScroll, 100 * i );
 		}
+		
+		$(".menu-item-has-children").each(function(){
+			$(this).addClass("dropdown");
+			$(this).find("a").eq(0).each(function(){
+				$(this).append('<b class="caret"></b>');
+			});
+		});
+		
+		$(".sub-menu").each(function(){
+			$(this).addClass("dropdown-menu");
+		});
+		
+		$(".current_page_parent").each(function(){
+			$(this).addClass("active");
+		});
+		
+
+		
+		$(".current_page_item").each(function(){
+			$(this).addClass("active");
+		});
+		
+		
 	} );
 
 } )( jQuery );

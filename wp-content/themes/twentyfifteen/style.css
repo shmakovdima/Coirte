@@ -228,6 +228,11 @@ border: 0 none;
 border-radius: 3px;	
 color: white!important;
 background-color: #26A69A;
+-webkit-transition:  all 0.4s;
+      -moz-transition:  all 0.4s;
+      -ms-transition:  all 0.4s;
+      -o-transition:  all 0.4s;
+      transition:  all 0.4s;
 }
 
 .btn:hover {
