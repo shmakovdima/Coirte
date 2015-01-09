@@ -13,7 +13,6 @@
 <div class="page-buffer"></div>
 </div>
 <footer id="footer" class="site-footer" role="contentinfo">
-
 		<div class="footer1">
 			<div class="container">
 				<div class="row">					
@@ -128,7 +127,15 @@
 							<i class="fa fa-vk fa-2 animation4s"></i></a>
 							<?php endif; ?>
 								
-								
+							<!-- Instagram link -->
+							<?php $posts = get_posts("category_name=instlink&orderby=date&numberposts=1&post_status=publish"); ?>
+							<?php if ($posts) : ?>
+						
+							<?php foreach ($posts as $post) : setup_postdata ($post); ?>							
+							<a href="<?php echo str_replace( array(''),'',$post->post_content); ?>" title="Мы в Вконтакте">		
+							<?php endforeach; ?>
+							<i class="fa fa-instagram"></i></a>
+							<?php endif; ?>	
 								
 							</p>	
 						</div>
@@ -157,20 +164,10 @@
   								'depth'           => 0,
 								
 							);
-
-
-
-
-
-
-
-
 							echo strip_tags(wp_nav_menu($menuParameters), '<a>'); ?>
 							</p>
 							
-							
-							
-					
+	
 						</div>
 					</div>
 

@@ -27,7 +27,7 @@ jQuery(function(){
 <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/sweet-alert.css">
 
 <!-- container -->
-	<div class="container">		
+	<div class="container wow fadeInDown">		
 			<?php if (function_exists('dimox_breadcrumbs')) dimox_breadcrumbs(); ?> 
 		
 
@@ -110,7 +110,7 @@ jQuery(function(){
 	</div>	<!-- /container -->
 	<?php $posts = get_posts("category_name=contactadress&orderby=date&numberposts=1&post_status=publish"); ?>
 	<?php if ($posts) : ?>
-	<section class="container-full top-space">
+	<section class="container-full top-space wow fadeInDown">
 		<div id="map"></div>
 	</section>
 	<?php endif; ?>	

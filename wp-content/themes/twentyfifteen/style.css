@@ -258,7 +258,21 @@ background-color: #26A69A;
 
 .simplenav a+a:before {
 	content: "|" ;
-	color: white!immportant;
+	color: white!important;
 	padding-right: 4px;
 }
 
+.container_padding {
+	padding-top: 20px;
+	padding-bottom: 100px;
+}
+
+.padding_top {
+	padding-top: 20px;
+}
+
+.recent-work-wrap .recent-work-inner h2 {
+color: white!important;}
+
+.fa-eye:before {
+padding-left: 2px;}

@@ -56,7 +56,7 @@ function dimox_breadcrumbs() {
   $link_before = '<span typeof="v:Breadcrumb">';  
   $link_after = '</span>';  
   $link_attr = ' rel="v:url" property="v:title"';  
-  $link = $link_before . '<a' . $link_attr . ' href="%1$s">%2$s</a>' . $link_after;  
+  $link = $link_before . '<a' .str_replace(Array('"'),"",$link_attr). ' href="%1$s">%2$s</a>' . $link_after;  
   $parent_id = $parent_id_2 = $post->post_parent;  
   $frontpage_id = get_option('page_on_front');  
   
@@ -82,7 +82,7 @@ function dimox_breadcrumbs() {
         if ($show_title == 0) $cats = preg_replace('/ title="(.*?)"/', '', $cats);  
         echo $cats;  
       }  
-      if ($show_current == 1) echo $before . sprintf($text['category'], single_cat_title('', false)) . $after;  
+      if ($show_current == 1) echo $before . sprintf(str_replace(Array('"',"Архив рубрики "),"",$text['category']), single_cat_title('', false)) . $after;  
   
     } elseif ( is_search() ) {  
       echo $before . sprintf($text['search'], get_search_query()) . $after;  

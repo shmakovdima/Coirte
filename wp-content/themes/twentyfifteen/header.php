@@ -110,6 +110,18 @@
 							<i class="fa fa-vk"></i></a></li> 
 							<?php endif; ?>
 							<?php wp_reset_query(); ?>	
+								
+							<!-- Instagram link -->
+							<?php $posts = get_posts("category_name=instlink&orderby=date&numberposts=1&post_status=publish"); ?>
+							<?php if ($posts) : ?>
+							<li>
+							<?php foreach ($posts as $post) : setup_postdata ($post); ?>							
+							<a href="<?php echo str_replace( array(''),'',$post->post_content); ?>" title="Мы в Instagram">		
+							<?php endforeach; ?>
+							<i class="fa fa-instagram"></i></a></li> 
+							<?php endif; ?>
+							<?php wp_reset_query(); ?>	
+								
                             </ul>
                             <div class="search">
                                 <form role="form" role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
