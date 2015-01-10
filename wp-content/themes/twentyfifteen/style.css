@@ -276,3 +276,16 @@ color: white!important;}
 
 .fa-eye:before {
 padding-left: 2px;}
+
+.sub-menu {
+	display: none;
+}
+
+.sidebar-gallery img {
+	max-width: 107px;
+}
+
+.sidebar-gallery li a {
+	border-radius: 10px;
+	overflow: hidden;
+}

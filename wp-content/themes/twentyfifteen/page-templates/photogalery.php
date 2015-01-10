@@ -21,9 +21,8 @@ get_header(); ?>
 		 <?php if (have_posts()) : while (have_posts()) : the_post();?>
    			<?php echo do_shortcode($post->post_content); ?> 		
  		<?php endwhile; endif; ?>		
+	
 	</div>	<!-- /container -->
-
-
 
 <?php
 get_footer();

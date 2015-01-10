@@ -12,14 +12,23 @@
  */
 
 get_header(); ?>
+<!-- container -->
+		
+	
+		 <?php if (have_posts()) : while (have_posts()) : the_post();?>
+					<p class="adress_copy">
+					<?php echo $post->post_content; ?> 
+					</p>
+					
+ 		<?php endwhile; endif; ?>		
+	
 
-	 <section id="blog" class="container container_padding">
+	 <section id="blog" class="container container_padding wow fadeInDown">
 	<?php if (function_exists('dimox_breadcrumbs')) dimox_breadcrumbs(); ?> 
         <div class="center padding_top">
             <h1><?php single_tag_title(); ?></h1>
-            <p class="lead">Pellentesque habitant morbi tristique senectus et netus et malesuada</p>
+            <p class="lead"><?php echo $cat->category_description;?></p>
         </div>
-
         <div class="blog">
             <div class="row">
                  <div class="col-md-8">
@@ -125,46 +134,13 @@ get_header(); ?>
                         </div>                     
                     </div><!--/.categories-->
     				
-    				<div class="widget archieve">
-                        <h3>Archieve</h3>
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <ul class="blog_archieve">
-                                    <li><a href="#"><i class="fa fa-angle-double-right"></i> December 2013 <span class="pull-right">(97)</span></a></li>
-                                    <li><a href="#"><i class="fa fa-angle-double-right"></i> November 2013 <span class="pull-right">(32)</a></li>
-                                    <li><a href="#"><i class="fa fa-angle-double-right"></i> October 2013 <span class="pull-right">(19)</a></li>
-                                    <li><a href="#"><i class="fa fa-angle-double-right"></i> September 2013 <span class="pull-right">(08)</a></li>
-                                </ul>
-                            </div>
-                        </div>                     
-                    </div><!--/.archieve-->
-    				
-                    <div class="widget tags">
-                        <h3>Tag Cloud</h3>
-                        <ul class="tag-cloud">
-                            <li><a class="btn btn-xs btn-primary" href="#">Apple</a></li>
-                            <li><a class="btn btn-xs btn-primary" href="#">Barcelona</a></li>
-                            <li><a class="btn btn-xs btn-primary" href="#">Office</a></li>
-                            <li><a class="btn btn-xs btn-primary" href="#">Ipod</a></li>
-                            <li><a class="btn btn-xs btn-primary" href="#">Stock</a></li>
-                            <li><a class="btn btn-xs btn-primary" href="#">Race</a></li>
-                            <li><a class="btn btn-xs btn-primary" href="#">London</a></li>
-                            <li><a class="btn btn-xs btn-primary" href="#">Football</a></li>
-                            <li><a class="btn btn-xs btn-primary" href="#">Porche</a></li>
-                            <li><a class="btn btn-xs btn-primary" href="#">Gadgets</a></li>
-                        </ul>
-                    </div><!--/.tags-->
-    				
+    			
+               
     				<div class="widget blog_gallery">
-                        <h3>Our Gallery</h3>
-                        <ul class="sidebar-gallery">
-                            <li><a href="#"><img src="images/blog/gallery1.png" alt="" /></a></li>
-                            <li><a href="#"><img src="images/blog/gallery2.png" alt="" /></a></li>
-                            <li><a href="#"><img src="images/blog/gallery3.png" alt="" /></a></li>
-                            <li><a href="#"><img src="images/blog/gallery4.png" alt="" /></a></li>
-                            <li><a href="#"><img src="images/blog/gallery5.png" alt="" /></a></li>
-                            <li><a href="#"><img src="images/blog/gallery6.png" alt="" /></a></li>
-                        </ul>
+						<h3>Наша фотогалерея</h3>     	
+							<?php echo do_shortcode('[random max="6"  template=sidebar2]'); ?> 
+							<a href="<?php echo get_home_url(); ?>/photogallery" title="Просмотреть все">Все наши фотографии</a>
+       
                     </div><!--/.blog_gallery-->
     			</aside>  
             </div><!--/.row-->

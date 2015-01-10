@@ -5,6 +5,10 @@
  * Contains handlers for navigation and widget area.
  */
 
+	
+
+
+
 ( function( $ ) {
 	var $body, $window, $sidebar, adminbarOffset, top = false,
 	    bottom = false, windowWidth, windowHeight, lastWindowPos = 0,
@@ -130,27 +134,6 @@
 			setTimeout( resizeAndScroll, 100 * i );
 		}
 		
-		$(".menu-item-has-children").each(function(){
-			$(this).addClass("dropdown");
-			$(this).find("a").eq(0).each(function(){
-				$(this).append('<b class="caret"></b>');
-				$(this).attr("data-toggle",'dropdown');
-
-			});
-		});
-		
-		$(".sub-menu").each(function(){
-			$(this).addClass("dropdown-menu");
-		});
-		
-		$(".current_page_parent").each(function(){
-			$(this).addClass("active");
-		});
-		
-		
-		$(".current_page_item").each(function(){
-			$(this).addClass("active");
-		});
 		
 		
 	} );

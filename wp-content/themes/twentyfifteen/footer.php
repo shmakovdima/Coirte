@@ -225,6 +225,27 @@
 
   ga('create', 'UA-58185841-1', 'auto');
   ga('send', 'pageview');
+		$(".menu-item-has-children").each(function(){
+			$(this).addClass("dropdown");
+			$(this).find("a").eq(0).each(function(){
+				$(this).append('<b class="caret"></b>');
+				$(this).attr("data-toggle",'dropdown');
+
+			});
+		});
+		
+		$(".sub-menu").each(function(){
+			$(this).addClass("dropdown-menu");
+		});
+		
+		$(".current_page_parent").each(function(){
+			$(this).addClass("active");
+		});
+		
+		
+		$(".current_page_item").each(function(){
+			$(this).addClass("active");
+		});
 </script>
 
 
