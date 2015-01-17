@@ -31,6 +31,237 @@
  * @since Twenty Fifteen 1.0
  */
 
+function kama_excerpt($args=''){
+	global $post;
+		parse_str($args, $i);
+		$maxchar 	 = isset($i['maxchar']) ?  (int)trim($i['maxchar'])		: 350;
+		$text 		 = isset($i['text']) ? 			trim($i['text'])		: '';
+		$save_format = isset($i['save_format']) ?	trim($i['save_format'])			: false;
+		$echo		 = isset($i['echo']) ? 			false		 			: true;
+
+	if (!$text){
+		$out = $post->post_excerpt ? $post->post_excerpt : $post->post_content;
+		$out = preg_replace ("!\[/?.*\]!U", '', $out ); //убираем шоткоды, например:[singlepic id=3]
+		// для тега <!--more-->
+		if( !$post->post_excerpt && strpos($post->post_content, '<!--more-->') ){
+			preg_match ('/(.*)<!--more-->/s', $out, $match);
+			$out = str_replace("\r", '', trim($match[1], "\n"));
+			$out = preg_replace( "!\n\n+!s", "</p><p>", $out );
+			$out = '<p>'. str_replace( "\n", '<br />', $out ) .' <a href="'. get_permalink($post->ID) .'#more-'. $post->ID.'">Читать дальше...</a></p>';
+			if ($echo)
+				return print $out;
+			return $out;
+		}
+	}
+
+	$out = $text.$out;
+	if (!$post->post_excerpt)
+		$out = strip_tags($out, $save_format);
+
+	if ( iconv_strlen($out, 'utf-8') > $maxchar ){
+		$out = iconv_substr( $out, 0, $maxchar, 'utf-8' );
+		$out = preg_replace('@(.*)\s[^\s]*$@s', '\\1 ...', $out); //убираем последнее слово, ибо оно в 99% случаев неполное
+	}
+
+	if($save_format){
+		$out = str_replace( "\r", '', $out );
+		$out = preg_replace( "!\n\n+!", "</p><p>", $out );
+		$out = "<p>". str_replace ( "\n", "<br />", trim($out) ) ."</p>";
+	}
+
+	if($echo) return print $out;
+	return $out;
+}
+
+function get_category_parents_ID( $_, $separator = '/', $visited = array() ) {
+    $chain = '';
+    $parent = &get_category( $_ );
+    if ( is_wp_error( $parent ) )
+    {
+        foreach((get_the_category()) as $category) 
+        { 
+            $chain .= get_category_parents_ID( $category, '/', $visited );
+        }
+    }
+    $category = $parent->term_id;
+    if ( $parent->parent && ( $parent->parent != $parent->term_id ) && !in_array( $parent->parent, $visited ) ) {
+        $visited[] = $parent->parent;
+        $chain .= get_category_parents_ID( $parent->parent, '/', $visited );
+    }
+     $chain .= $category.$separator;
+    return $chain;
+}
+
+remove_filter('pre_user_description', 'wp_filter_kses');
+add_filter('user_contactmethods', 'my_user_contactmethods');
+ 
+function my_user_contactmethods($user_contactmethods){
+ 
+  $user_contactmethods['dolgn'] = 'Должность';
+  $user_contactmethods['contactform'] = 'Шорт код контактной формы';
+  return $user_contactmethods;
+}
+
+function kama_recent_comments($limit=10, $ex=45, $cat=0, $echo=1, $gravatar=''){
+	global $wpdb;
+	if($cat){
+		$IN = (strpos($cat,'-')===false)?"IN ($cat)":"NOT IN (".str_replace('-','',$cat).")";
+		$join = "LEFT JOIN $wpdb->term_relationships rel ON (p.ID = rel.object_id)
+		LEFT JOIN $wpdb->term_taxonomy tax ON (rel.term_taxonomy_id = tax.term_taxonomy_id)";
+		$and = "AND tax.taxonomy = 'category'
+		AND tax.term_id $IN";
+	}
+	$sql = "SELECT comment_ID, comment_post_ID, comment_content, post_title, guid, comment_author, comment_author_email
+	FROM $wpdb->comments com
+		LEFT JOIN $wpdb->posts p ON (com.comment_post_ID = p.ID) {$join}
+	WHERE comment_approved = '1'
+		AND comment_type = '' {$and}
+	ORDER BY comment_date DESC
+	LIMIT $limit"; 
+
+	$results = $wpdb->get_results($sql);
+
+	$out = '';
+	foreach ($results as $comment){
+		if($gravatar)
+			$grava = '<img src="http://www.gravatar.com/avatar/'. md5($comment->comment_author_email) .'?s=$gravatar&default=" alt="" width="'. $gravatar .'" height="'. $gravatar.'" />';
+		$comtext = strip_tags($comment->comment_content);
+		$leight = (int) iconv_strlen( $comtext, 'utf-8' );
+		if($leight > $ex) $comtext =  iconv_substr($comtext,0,$ex, 'UTF-8').' …';
+		$out .= "\n<div class='single_comments'>$grava<p>{$comtext}
+		</p><div class='entry-meta small muted'><span>Написал ".strip_tags($comment->comment_author)." на <a href='".get_comment_link($comment->comment_ID)." title='{$comment->post_title}'>{$comment->post_title}</a></span></div></div>";
+	}
+	
+
+	if ($echo) echo $out;
+	else return $out;
+}
+
+function getCurrentCatID(){  
+  global $wp_query;  
+  	if(is_category() || is_single()){  
+		$cat_ID = get_query_var('cat');  
+  	}  
+  return $cat_ID;  
+ }
+
+function wp_corenavi($before = '', $after = '', $echo = true ) {  
+	/* ================ Настройки ================ */
+	$text_num_page = ''; // Текст перед пагинацией. {current} - текущая; {last} - последняя (пр. 'Страница {current} из {last}' получим: "Страница 4 из 60" )
+	$num_pages = 10; // сколько ссылок показывать
+	$stepLink = 10; // ссылки с шагом (значение - число, размер шага (пр. 1,2,3...10,20,30). Ставим 0, если такие ссылки не нужны.
+	$dotright_text = '…'; // промежуточный текст "до".
+	$dotright_text2 = '…'; // промежуточный текст "после".
+	$backtext = 'Предыдущая страница'; // текст "перейти на предыдущую страницу". Ставим 0, если эта ссылка не нужна.
+	$nexttext = 'Следующая страница'; // текст "перейти на следующую страницу". Ставим 0, если эта ссылка не нужна.
+	$first_page_text = '« к началу'; // текст "к первой странице". Ставим 0, если вместо текста нужно показать номер страницы.
+	$last_page_text = 'в конец »'; // текст "к последней странице". Ставим 0, если вместо текста нужно показать номер страницы.
+	/* ================ Конец Настроек ================ */ 
+
+	global $wp_query;
+
+	$posts_per_page = (int) $wp_query->query_vars['posts_per_page'];
+	$paged = (int) $wp_query->query_vars['paged'];
+	$max_page = $wp_query->max_num_pages;
+
+	//проверка на надобность в навигации
+	if( $max_page <= 1 )
+		return false; 
+
+	if( empty($paged) || $paged == 0 ) 
+		$paged = 1;
+
+	$pages_to_show = intval( $num_pages );
+	$pages_to_show_minus_1 = $pages_to_show-1;
+
+	$half_page_start = floor( $pages_to_show_minus_1/2 ); //сколько ссылок до текущей страницы
+	$half_page_end = ceil( $pages_to_show_minus_1/2 ); //сколько ссылок после текущей страницы
+
+	$start_page = $paged - $half_page_start; //первая страница
+	$end_page = $paged + $half_page_end; //последняя страница (условно)
+
+	if( $start_page <= 0 ) 
+		$start_page = 1;
+	if( ($end_page - $start_page) != $pages_to_show_minus_1 ) 
+		$end_page = $start_page + $pages_to_show_minus_1;
+	if( $end_page > $max_page ) {
+		$start_page = $max_page - $pages_to_show_minus_1;
+		$end_page = (int) $max_page;
+	}
+
+	if( $start_page <= 0 ) 
+		$start_page = 1;
+
+	//выводим навигацию
+	$out = '';
+
+	// создаем базу чтобы вызвать get_pagenum_link один раз
+	$link_base = get_pagenum_link( 99999999 ); // 99999999 будет заменено
+	$link_base = str_replace( 99999999, '___', $link_base);
+	$first_url = get_pagenum_link( 1 );
+	$out .= $before . "<ul class='wp-pagenavi pagination pagination-lg'>\n";
+		
+		if( $text_num_page ){
+			$text_num_page = preg_replace( '!{current}|{last}!', '%s', $text_num_page );
+			$out.= sprintf( "<span class='pages'>$text_num_page</span> ", $paged, $max_page );
+		}
+		// назад <li><a href="#"><i class="fa fa-long-arrow-left"></i>Предыдущая страница</a></li>
+		if ( $backtext && $paged != 1 ) 
+			$out .= '<li><a class="prev" href="'. str_replace( '___', ($paged-1), $link_base ) .'"><i class="fa fa-long-arrow-left"></i>'. $backtext .'</a></li> ';
+		// в начало 
+		if ( $start_page >= 2 && $pages_to_show < $max_page ) {
+			$out.= '<a class="first" href="'. $first_url .'">'. ( $first_page_text ? $first_page_text : 1 ) .'</a> ';
+			if( $dotright_text && $start_page != 2 ) $out .= '<span class="extend">'. $dotright_text .'</span> ';
+		}
+		// пагинация
+		for( $i = $start_page; $i <= $end_page; $i++ ) {
+			if( $i == $paged )
+				$out .= '<li class="active"><a  href="#">'.$i.'</a></li> ';
+			elseif( $i == 1 )
+				$out .= '<li><a href="'. $first_url .'">1</a></li> ';
+			else
+				$out .= '<li><a href="'. str_replace( '___', $i, $link_base ) .'">'. $i .'</a></li> ';
+		}
+
+		//ссылки с шагом
+		if ( $stepLink && $end_page < $max_page ){
+			for( $i = $end_page+1; $i<=$max_page; $i++ ) {
+				if( $i % $stepLink == 0 && $i !== $num_pages ) {
+					if ( ++$dd == 1 ) 
+						$out.= '<span class="extend">'. $dotright_text2 .'</span> ';
+					$out.= '<a href="'. str_replace( '___', $i, $link_base ) .'">'. $i .'</a> ';
+				}
+			}
+		}
+		// в конец
+		if ( $end_page < $max_page ) {
+			if( $dotright_text && $end_page != ($max_page-1) ) 
+				$out.= '<span class="extend">'. $dotright_text2 .'</span> ';
+			$out.= '<a class="last" href="'. str_replace( '___', $max_page, $link_base ) .'">'. ( $last_page_text ? $last_page_text : $max_page ) .'</a> ';
+		}
+		// вперед <li><a href="#">Next Page<i class="fa fa-long-arrow-right"></i>Следующая страница</a></li>
+		if ( $nexttext && $paged != $end_page ) 
+			$out.= '<li><a class="next" href="'. str_replace( '___', ($paged+1), $link_base ) .'"><i class="fa fa-long-arrow-right"></i>'. $nexttext .'</a></li> ';
+
+	$out .= "</ul>". $after ."\n";
+	
+	if ( ! $echo ) 
+		return $out;
+	echo $out;  
+}  
+
+					/*<ul class="pagination pagination-lg">
+                       <li><a href="#"><i class="fa fa-long-arrow-left"></i>Предыдущая страница</a></li>
+					   <li><a href="#">Next Page<i class="fa fa-long-arrow-right"></i>Следующая страница</a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li></ul>
+                        
+                   
+*/
+
 
 function dimox_breadcrumbs() {  
   
@@ -53,8 +284,8 @@ function dimox_breadcrumbs() {
   
   global $post;  
   $home_link = home_url('/');  
-  $link_before = '<span typeof="v:Breadcrumb">';  
-  $link_after = '</span>';  
+  $link_before = '<li typeof="v:Breadcrumb">';  
+  $link_after = '</li>';  
   $link_attr = ' rel="v:url" property="v:title"';  
   $link = $link_before . '<a' .str_replace(Array('"'),"",$link_attr). ' href="%1$s">%2$s</a>' . $link_after;  
   $parent_id = $parent_id_2 = $post->post_parent;  

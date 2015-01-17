@@ -252,7 +252,8 @@ input.search-form:hover, input.search-form:focus {
 .navbar {
   border-radius: 0;
   margin-bottom: 0;
-  background: #151515;
+   background: #151515;
+  /*background: #009688;*/
   padding: 15px 0;
   padding-bottom: 0;
 }
@@ -297,8 +298,12 @@ input.search-form:hover, input.search-form:focus {
 .navbar-inverse .navbar-nav > .open > a,
 .navbar-inverse .navbar-nav > .open > a:hover,
 .navbar-inverse .navbar-nav > .open > a:focus {
-  background-color: #26A69A;
-  color: #fff;
+/*	
+ background-color: #fff;
+color: #009688;
+*/
+background-color: #26A69A;
+  color: #fff;	
 }
 
 .navbar-inverse .navbar-nav .dropdown-menu {
@@ -397,7 +402,8 @@ input.search-form:hover, input.search-form:focus {
   position: absolute;
   width: 100%;
   display: block !important;
-  height: 730px;
+  height: 505px;
+	border-radius: 20px;
   -webkit-transition: opacity ease-in-out 500ms;
   -moz-transition: opacity ease-in-out 500ms;
   -o-transition: opacity ease-in-out 500ms;
@@ -441,11 +447,11 @@ input.search-form:hover, input.search-form:focus {
 }
 
 #main-slider .prev {
-  left: 10px;
+  left: 25px;
 }
 
 #main-slider .next {
-  right: 10px;
+  right: 25px;
 }
 
 #main-slider .carousel-indicators li {
@@ -936,20 +942,69 @@ a.accordion-toggle  i{
   border-bottom: 0 none;
 }
 
-#partner {
-  background: url(../images/partners/partner_bg.png) 50% 50% no-repeat;
-  background-size: cover;
+
+#vopros_psih {
+	
+	
+	color: black;
+	padding-top: 160px;
+	padding-bottom: 200px;
+}
+#background-image {
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  background: url(../images/vopros.jpg)  no-repeat;
+	  background-size: cover!important;
+	background-position: top center;
+  background-attachment: fixed!important;
+}
+
+
+#vopros_psih .contact-info i {
+	background: white;
+	color: black;
+}
+
+#vopros_psih h2 {
+	font-size: 50px;
+	background: white;
+	float: left;
+	color: #26A69A;
+	border: 1px solid #26A69A;
+	padding: 20px;
+	border-radius: 16px;
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+#vopros_psih h2 a:hover {
+	opacity:0.6;
+	color: #26A69A;
+}
+
+.display_none {
+	display: none!important;
 }
 
 #partner {
   color: #fff;
+
   text-align: center;
+	 background: url(../images/partners/partner_bg.png) 50% 50% no-repeat;
+  background-size: cover;
 }
 
 #partner h2, 
 #partner h3 {
   color: #fff;
 }
+
+
 
 .partners ul {
   list-style: none;
@@ -960,11 +1015,12 @@ a.accordion-toggle  i{
 .partners ul li{
   display: inline-block;
   float: left;
-  width: 20%;
+  width: 25%;
 }
 
 #conatcat-info{
-  background: #fff url(../images/contact.png) no-repeat 90% 0;
+  background:  url(../images/contact.png) no-repeat 90% 0;
+	
   padding: 30px 0;
 }
 
@@ -1922,7 +1978,7 @@ ul.social_icons li  a i{
 }
 
 .form-group .form-control {
-  padding: 7px 12px;
+  padding: 11px 12px;
   border-color:#f2f2f2;
   box-shadow: none;
 }
@@ -1959,15 +2015,19 @@ textarea#message{
   margin-bottom: 0;
 }
 
+
 .widget .entry-meta span {
   display: inline-block;
-  margin-right: 10px;
+  margin-right: 4px;
 }
 
-.widget h3 {
+.widget h2 {
   color: #000;
   text-transform: uppercase;
   margin-bottom: 20px;
+  font-size: 16px;
+font-weight: 400;
+line-height: 24px;
 }
 
 .blog_category{
@@ -1977,8 +2037,10 @@ textarea#message{
 }
 
 .blog_category li{
-  float:none;
-  margin-bottom:20px;
+float: left;
+clear: left;
+position: relative;
+margin-bottom: 20px;
 }
 
 .blog_category li a {
@@ -2147,7 +2209,7 @@ ul.faq li > div h3 {
   font-size: 12px;
   overflow: hidden;
   padding: 5px;
-  text-align: left;
+
 }
 
 #publish_date {
@@ -2377,7 +2439,7 @@ ul.sidebar-gallery {
   padding-bottom: 30px;
 }
 
-.post_reply_comments a {
+.post_reply_comments a.reply {
   bottom: 15px;
   position: absolute;
   right: 30px;
@@ -2387,7 +2449,7 @@ ul.sidebar-gallery {
   padding: 8px 20px;
 }
 
-.post_reply_comments a:before {
+.post_reply_comments a.reply:before {
   border-color: #26A69A transparent transparent;
   border-style: solid;
   border-width: 16px;
@@ -2405,7 +2467,7 @@ ul.sidebar-gallery {
 
 .message_heading {
   margin-bottom: 50px;
-  margin-top: 60px;
+  margin-top: 40px;
 }
 
 
@@ -2488,6 +2550,20 @@ shortcodes page css
 }
 
 
+.logged-in-as {
+	margin-left: 15px;
+	margin-top: -45px;
+	margin-bottom: 30px;
+}
 
+#main-slider {
+	padding-top: 50px;
+}
 
-
+.margin_bottom_float {
+	margin-bottom: 30px;
+	margin-top: 0px;
+}
+.margin_bottom_float h3 {
+	margin-bottom: 10px!important;
+}

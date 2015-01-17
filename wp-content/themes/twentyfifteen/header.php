@@ -8,8 +8,11 @@
  * @subpackage Twenty_Fifteen
  * @since Twenty Fifteen 1.0
  */
- 
+
 ?><!DOCTYPE html>
+
+
+
 <html <?php language_attributes(); ?> class="no-js">
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
@@ -23,7 +26,7 @@
 	<link rel="apple-touch-icon" sizes="120x120" href="<?php echo get_template_directory_uri(); ?>/images/apple-touch-icon-120x120.png" />
 	<link rel="apple-touch-icon" sizes="144x144" href="<?php echo get_template_directory_uri(); ?>/images/apple-touch-icon-144x144.png" />
 	<link rel="apple-touch-icon" sizes="152x152" href="<?php echo get_template_directory_uri(); ?>/images/apple-touch-icon-152x152.png" />
-	
+	<meta name='yandex-verification' content='6429e3eac26cff34' />
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 	<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.js"></script>
@@ -57,7 +60,7 @@
 							</a></nobr>
 							<?php endforeach; ?>
 							<?php endif; ?>	
-							<?php wp_reset_query(); ?>
+							
 							</p></div>
                     </div>
                     <div class="col-sm-6 col-xs-8">
@@ -73,7 +76,7 @@
 							<?php endforeach; ?>
 							<i class="fa fa-skype"></i></a></li> 
 							<?php endif; ?>
-							<?php wp_reset_query(); ?>
+							
 								
                                
 							<!-- Facebook link -->
@@ -85,7 +88,7 @@
 							<?php endforeach; ?>
 							<i class="fa fa-facebook"></i></a></li> 
 							<?php endif; ?>
-							<?php wp_reset_query(); ?>
+							
                           
 								
 							<!-- Twitter link -->
@@ -97,7 +100,7 @@
 							<?php endforeach; ?>
 							<i class="fa fa-twitter"></i></a></li> 
 							<?php endif; ?>
-							<?php wp_reset_query(); ?>
+							
                                 
 							
 							<!-- VK link -->
@@ -109,7 +112,7 @@
 							<?php endforeach; ?>
 							<i class="fa fa-vk"></i></a></li> 
 							<?php endif; ?>
-							<?php wp_reset_query(); ?>	
+							
 								
 							<!-- Instagram link -->
 							<?php $posts = get_posts("category_name=instlink&orderby=date&numberposts=1&post_status=publish"); ?>
@@ -120,7 +123,7 @@
 							<?php endforeach; ?>
 							<i class="fa fa-instagram"></i></a></li> 
 							<?php endif; ?>
-							<?php wp_reset_query(); ?>	
+							<?php wp_reset_query();wp_reset_postdata();rewind_posts(); ?>
 								
                             </ul>
                             <div class="search">

@@ -1,11 +1,14 @@
+
 jQuery(function($) {'use strict',
 
 	//#main-slider
 	$(function(){
-		$('#main-slider.carousel').carousel({
-			interval: 8000
+		$('.carousel').carousel({
+			interval: 10,
+			pause: false
 		});
 	});
+
 					
 	
 
@@ -72,6 +75,33 @@ jQuery(function($) {'use strict',
 					
 	$(".form-control").focus(function(){
 		$(this).parent().find(".wpcf7-not-valid-tip").remove();
+	});
+					
+	$(".form-submit").addClass("form-group");
+	$(".form-submit .submit").addClass("btn btn-primary btn-lg");
+		
+	$(".img-responsive.wow.fadeInDown").attr("data-wow-duration","1000ms");
+	$(".img-responsive.wow.fadeInDown").attr("data-wow-delay","300ms");
+	$(".img-responsive.wow.fadeInDown img").prop("width","");
+	$(".img-responsive.wow.fadeInDown img").prop("height","");
+	
+	$('.breadcrumb li.active').html($('.breadcrumb li.active').html().replace("Статьи автора ", ""));
+					
+	$(".blog_category .badge").each(function(){
+		var width = $(this).parent().width();
+		$(this).css("left", width+55+"px");
+		
+	});
+	$(".pull-left img").addClass("img-responsive");
+							
+});
+
+$(document).ready(function(){
+	$(".select_answer").click(function(){
+		
+		$(".select_block").removeClass("active");
+		var id = $(this).prop("id");
+		$(".sel"+id).addClass("active");
 	});
 });
 

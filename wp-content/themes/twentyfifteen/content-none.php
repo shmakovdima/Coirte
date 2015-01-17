@@ -22,9 +22,8 @@
 			<p><?php printf( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'twentyfifteen' ), esc_url( admin_url( 'post-new.php' ) ) ); ?></p>
 
 		<?php elseif ( is_search() ) : ?>
+			<h2><?php _e( 'Простите, но по заданному запросу ничего не найдено', 'twentyfifteen' ); ?></h2>
 
-			<p><?php _e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'twentyfifteen' ); ?></p>
-			<?php get_search_form(); ?>
 
 		<?php else : ?>
 
