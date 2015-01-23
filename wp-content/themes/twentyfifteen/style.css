@@ -11,6 +11,10 @@ input {
 	outline: none;
 }
 
+.dates img {
+	margin-right: 10px;
+}
+
 /*
 body {
 	background: url(images/bg.jpeg);
@@ -995,3 +999,11 @@ font-weight: 400;
 	margin-bottom: 40px;
 }
 
+.partners ul li {
+	float: none;
+	width: 40%;
+}
+
+.partners {
+	margin-top: -10px;
+}

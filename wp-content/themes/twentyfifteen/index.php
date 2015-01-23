@@ -1,3 +1,4 @@
+
 <?php
 /**
  * The main template file
@@ -13,9 +14,6 @@
  * @subpackage Twenty_Fifteen
  * @since Twenty Fifteen 1.0
  */
-
-
-
 get_header(); ?>
 
 <?php $posts = get_posts("category_name=about_compani&orderby=date&numberposts=1&post_status=publish"); $counters=0;?>
@@ -40,7 +38,6 @@ get_header(); ?>
 		$date = "Скоро";
 	}
 	$mest = get_field("кол-во_мест",get_the_ID());
-
 							$nexttren.='<div class="panel panel-default">';
 								if ($counters==0){
 									$nexttren.='<div class="panel-heading active">';
@@ -62,8 +59,6 @@ get_header(); ?>
 									$nexttren.= '<div id="collapseTwo'.get_the_ID().'" class="panel-collapse collapse">';
 								}
                             
-
-
                            $nexttren.= ' <div class="panel-body">
                                   <div class="media accordion-inner">
                                         <div class="pull-left">
@@ -367,14 +362,14 @@ foreach ($posts as $post) : setup_postdata ($post); do_action('[youtube]VlramIFd
 		</div>
 	</section>
 
-	<section id="partner" class="partner wow fadeInDown display_none">
+	<section id="partner" class="partner wow fadeInDown">
         <div class="container">
             <div class="center wow fadeInDown">
                 <h2>Наши партнеры</h2>
             </div>    
             <div class="partners">
                 <ul>
-					<?php $posts = get_posts("category_name=ownpartners&orderby=date&numberposts=4&post_status=publish"); ?>
+					<?php $posts = get_posts("category_name=ownpartners&orderby=date&numberposts=3&post_status=publish"); ?>
 					<?php if ($posts) : ?>
 							<?php foreach ($posts as $post) : setup_postdata ($post); ?>	
 								<li><a href="<?php echo $post->post_content; ?>" title="<?php the_title() ?>"><?php the_post_thumbnail('full', array('class' => 'img-responsive wow fadeInDown main_page', 'width'=>'auto', 'height'=>'auto' )); ?></a></li>

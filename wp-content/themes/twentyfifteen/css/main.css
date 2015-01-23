@@ -949,6 +949,7 @@ a.accordion-toggle  i{
 	color: black;
 	padding-top: 160px;
 	padding-bottom: 200px;
+	overflow: hidden;
 }
 #background-image {
   z-index: -1;
