@@ -120,7 +120,7 @@
 										// Проверка в категории за чашкой чая
 									$count = get_category(15)->category_count;
 									if ($count > 0){
-										echo '  <li><a href="'.get_category_link(15).'">За чашкой чая <span class="badge">'. $count.'</span></a></li>';
+										echo '  <li><a href="'.get_category_link(15).'">За чашкой кофе <span class="badge">'. $count.'</span></a></li>';
 									}
 									?>
                                 </ul>

@@ -7,6 +7,7 @@
  * @since Twenty Fifteen 1.0
  */
 
+
 $default_query = clone $wp_query;
 if ( have_posts() ) {
 	foreach ($posts as $post) : setup_postdata ($post); 
@@ -15,7 +16,7 @@ if ( have_posts() ) {
 	endforeach;
 }
 
- $posts = get_posts("category_name=nexttren&order=asc&orderby=date&numberposts=5&post_status=publish"); $counters=0; $nexttren=""; $nexttren.= 	'<div class="panel-group" id="accordion2">';?>
+ $posts = get_posts("category_name=nexttren&order=asc&orderby=date&numberposts=5&post_status=publish"); $counters=0; $nexttren=""; $nexttren.= 	'<div class="panel-group" id="accordion3">';?>
 <?php if ($posts) : ?>
 <?php foreach ($posts as $post) : setup_postdata ($post); ?>
 	<?php 	
@@ -35,16 +36,16 @@ if ( have_posts() ) {
 				
 							$nexttren.= '	
                               <h3 class="panel-title">
-                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo'.get_the_ID().'">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion3" href="#collapseTwo'.get_the_ID().'1">
 									 <i class="fa fa-angle-right pull-right"></i>'.get_the_title().'
                                 </a>
                               </h3>
                             </div>';
 							
 							if ($counters==0){
-									$nexttren.= '<div id="collapseTwo'.get_the_ID().'" class="panel-collapse collapse in">';
+									$nexttren.= '<div id="collapseTwo'.get_the_ID().'1" class="panel-collapse collapse in">';
 								}else{
-									$nexttren.= '<div id="collapseTwo'.get_the_ID().'" class="panel-collapse collapse">';
+									$nexttren.= '<div id="collapseTwo'.get_the_ID().'1" class="panel-collapse collapse">';
 								}
                             
 
@@ -74,9 +75,27 @@ if ( have_posts() ) {
 <?php $counters++; endforeach; ?>
 <?php endif; 
 
-
+if ( function_exists( 'wpcf7_enqueue_scripts' ) ) {
+   wpcf7_enqueue_scripts();
+   wpcf7_enqueue_styles();
+}
 
 get_header(); ?>
+
+<script src="<?php echo get_template_directory_uri(); ?>/js/sweet-alert.min.js"></script>
+
+<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.maskedinput-1.2.2.js"></script>
+<script type="text/javascript">
+jQuery(function(){
+    jQuery("#contact_phone").mask("+7 (999) 999-9999");
+	
+});
+$(document).load(function(){
+	$("select").chosen({disable_search_threshold: 10});
+});
+</script>
+
+
 
  <section id="blog" class="container container_padding wow fadeInDown">
 	 <?php if (function_exists('dimox_breadcrumbs')) dimox_breadcrumbs(); ?> 
@@ -114,13 +133,13 @@ get_header(); ?>
 									<?php 
 									
 									$cat = get_the_category();
-									
-									if ($cat[0]->parent == 30){
+									if (($cat[0]->parent == 30) || ($cat[0]->parent == 39) ) {
 										$date = get_field("время_тренинга",get_the_ID());
 										$who = get_field("кто_ведет",get_the_ID());
 										$mest = get_field("кол-во_мест",get_the_ID());
 										$sold = get_field("стоимость",get_the_ID());
 										$robo = get_field("шорт-код_робокассы",get_the_ID());
+										$robo = '[contact-form-7 id="316" title="Запись на семинар"]';
 									
 									if ($date!="") {
 									?>
@@ -138,9 +157,7 @@ get_header(); ?>
 									?>
 									<span id="publish_date"><?php the_time('j M'); ?></span>
                                     <span class="text-center"><i class="fa fa-user"></i> <a class="text-center" href="<?php echo home_url();?>/author/<?php the_author_nickname(); ?>"><?php echo get_the_author(); ?></a></span>
-									
-									
-									
+
 									<?	
 									}
 									
@@ -154,10 +171,10 @@ get_header(); ?>
 									
                                     <h1><?php echo the_title() ?></h1>
 									<?php
-									if ($cat[0]->parent == 30){
+									if (($cat[0]->parent == 30) || ($cat[0]->parent == 39) && ($robo!=="")){
 										?>
 									<div class="margin_bottom_float">
-										 <h3 >Оплата тренинга:</h3>
+										 <h3>Запись на тренинг:</h3>
 										<?php echo do_shortcode($robo); ?>
 									</div>
 									<?php } ?>
@@ -166,10 +183,10 @@ get_header(); ?>
 					  </div>
                         </div><!--/.blog-item-->
 									<?php
-									if ($cat[0]->parent == 30){
+									if (($cat[0]->parent == 30) || ($cat[0]->parent == 39) && ($robo!=="")){
 										?>
 									<div>
-										 <h2 class="sold">Оплата тренинга:</h2>
+										 <h2 class="sold">Запись на тренинг:</h2>
 										<?php echo do_shortcode($robo); ?>
 									</div>
 			

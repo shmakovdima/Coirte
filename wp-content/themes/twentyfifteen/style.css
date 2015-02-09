@@ -321,6 +321,14 @@ input, textarea {
 	color: white!important;
 }
 
+.wpcf7-validation-errors {
+display:none;}
+
+.wpcf7-not-valid-tip+input {
+	background-color: #F27474!important;
+	color: white!important;
+}
+
 .wpcf7-not-valid-tip+input::-webkit-input-placeholder {
 	color: white!important;
 }
@@ -499,7 +507,7 @@ top: 20px;
 #partner, #team {
 	padding: 70px 0;
 	padding-bottom: 100px;
-	background-attachment: fixed;
+	
 }
 
 #team {
@@ -1006,4 +1014,53 @@ font-weight: 400;
 
 .partners {
 	margin-top: -10px;
+}
+
+.navbar-toggle {
+	outline: none;
+}
+
+@media (max-width: 1200px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin: 7.5px -15px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+	
+	.navbar-brand {
+		padding-bottom: 13px;
+	}
+	.navbar-toggle  {
+		margin-top: 24px;
+	}
+	.navbar-nav>li {
+		padding-bottom: 10px;
+	}
+}
+
+.screen-reader-response {
+	display: none;
+}
+
+.wpcf7-mail-sent-ok {
+	display: none;
 }

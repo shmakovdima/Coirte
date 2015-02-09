@@ -1,5 +1,11 @@
 @import "http://webfonts.ru/import/osans.css";
 
+
+.row.cycle-slideshow {
+	min-height: 265px;
+}
+
+
 body {
   font-family: 'Open Sans';
   color:#4e4e4e;
@@ -241,7 +247,7 @@ input.search-form{
 
 
 input.search-form:hover, input.search-form:focus {
-  width: 180px;
+  width: 180px!important;
 }
 
 .navbar-brand {
@@ -951,18 +957,12 @@ a.accordion-toggle  i{
 	padding-bottom: 200px;
 	overflow: hidden;
 }
-#background-image {
-  z-index: -1;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-
+#vopros_psih {
+  
   background: url(../images/vopros.jpg)  no-repeat;
 	  background-size: cover!important;
 	background-position: top center;
-  background-attachment: fixed!important;
+
 }
 
 

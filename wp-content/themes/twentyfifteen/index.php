@@ -184,7 +184,7 @@ get_header(); ?>
 									<h2 >Наши новости</h2>
 								</header>
 								<ul class="dates">
-									<?php $posts = get_posts("category_name=news&orderby=date&numberposts=5&post_status=publish"); ?>
+									<?php $posts = get_posts("category_name=news&orderby=date&numberposts=3&post_status=publish"); ?>
 									<?php if ($posts) : ?>
 									<?php foreach ($posts as $post) : setup_postdata ($post); ?>
 									<li>
@@ -233,21 +233,22 @@ get_header(); ?>
                     <h2 class="section-heading ">Наша команда</h2>   
                 </div>
             </div>
-			 <div class="row">
+			<div class="row cycle-slideshow" data-cycle-fx=carousel data-cycle-timeout=1000 data-cycle-carousel-visible=6 data-cycle-carousel-fluid=true data-cycle-slides="div">
 			<?php
 				$parametri = array(
-				'role' => 'Administrator',
+			
 				'exclude' => array(
 					'nicename' =>'shmakovdima',
 				)
 			);
  
 			$zapros_uzerov = new WP_User_Query($parametri);
- 
+ 			$countert = 0;
 if (empty($zapros_uzerov->results) == FALSE) : 
     foreach ($zapros_uzerov->results as $polzovatel):
 		if (($polzovatel->user_nicename)==='shmakovdima') continue;
-		echo '<div class="col-sm-3"><div class="team-member ">';
+		$countert++;
+		echo '<div class="col-sm-3 my_slider slidenumber'.$countert.'"><div class="team-member ">';	
         print get_avatar($polzovatel->ID,190, '', $name);
         print '<h4 class="text-center"><a href="' . home_url() . "/author/{$polzovatel->user_nicename}\">{$polzovatel->display_name}</a></h4>";
 		 print '<p class="text-muted text-center">'.get_user_meta($polzovatel->ID, 'dolgn', true).'</p>';
@@ -258,6 +259,7 @@ endif;
 ?>
             </div>
         </div>
+		
     </section>
 
 	<section id="team" class=" wow fadeInDown">"

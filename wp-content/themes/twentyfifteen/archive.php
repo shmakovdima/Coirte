@@ -42,7 +42,7 @@ get_header(); ?>
                                 <div class="entry-meta">
 									<?php $cat = get_category(get_query_var('cat'),false);
 									$cat_parent = $cat->parent; // ID родительской категории
-									if ($cat_parent==30){
+									if (($cat_parent==30)|| ($cat_parent== 39)){
 										$date = get_field("время_тренинга",get_the_ID());
 										$who = get_field("кто_ведет",get_the_ID());
 										$mest = get_field("кол-во_мест",get_the_ID());
