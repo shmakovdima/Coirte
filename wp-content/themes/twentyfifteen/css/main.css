@@ -120,7 +120,7 @@ body > section {
 
 .center {
   text-align: center;
-  padding-bottom: 55px;
+  padding-bottom: 15px;
 }
 
 .scaleIn {
@@ -791,7 +791,7 @@ background-color: #26A69A;
 }
 
 .panel-body{
-  padding: 20px 20px 10px;
+  padding: 20px 0px 10px;
 }
 
 .panel-group .panel+.panel{
@@ -2549,7 +2549,6 @@ shortcodes page css
 
 
 .logged-in-as {
-	margin-left: 15px;
 	margin-top: -45px;
 	margin-bottom: 30px;
 }
@@ -2618,7 +2617,7 @@ position:absolute;
 
 .header_life {
 	margin-bottom: 40px;
-	
+	  margin-top: -60px;
 }
 
 .overflowed {
@@ -2633,8 +2632,8 @@ position:absolute;
 
 .digit_counters {
 	position: relative;
-	float: left;
-	clear: both;
+	margin: 0 auto;
+	    width: 550px;
 }
 
 .digit_counters span {
@@ -2655,7 +2654,9 @@ position:absolute;
 
 .header_life h2 {
 	font-size: 30px;
-	margin-left: 4px;
+    padding-bottom: 20px;
+    text-align: center;
+    margin-left: 4px;
 }
 
 .margin_bottom_float {
@@ -2774,6 +2775,18 @@ position:absolute;
 	margin-bottom: 10px;
 }
 
+.digit {
+	width:550px;
+}
+
+.cntDigit {
+	display: inline;
+}
+
 .margin_top_40px {
 	margin-top: 70px;
+}
+
+#blog , #main-slider{
+	visibility: hidden;
 }

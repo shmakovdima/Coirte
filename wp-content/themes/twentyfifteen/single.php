@@ -106,8 +106,7 @@ $(document).load(function(){
 
         <div class="blog padding_top">
             <div class="row">
-                <div class="col-md-8">
-				<?php
+					<?php
 						update_post_caches($posts);
 
 						$wp_query = clone  $default_query;
@@ -121,7 +120,21 @@ $(document).load(function(){
 							
 						while(have_posts()):the_post();
 							
+						$cat = get_the_category();
+							
+						if (($cat[0]->parent == 30) || ($cat[0]->parent == 39)) {
+						
+							$breakpostion = true;
+							echo '<div class="col-md-12">';
+						}else{
+							
+							$breakpostion = false;
+							echo '<div class="col-md-8">';
+						}
+							
 						?>
+                
+				
                     <div class="blog-item">
 							<?php if (has_post_thumbnail()) { ?>
                            		<?php the_post_thumbnail('full', array('class' => 'img-responsive img-blog' )); ?>
@@ -133,7 +146,7 @@ $(document).load(function(){
                                     <div class="entry-meta">
 									<?php 
 									
-									$cat = get_the_category();
+									
 									if (($cat[0]->parent == 30) || ($cat[0]->parent == 39) ) {
 										$date = get_field("время_тренинга",get_the_ID());
 										$who = get_field("кто_ведет",get_the_ID());
@@ -234,11 +247,11 @@ $(document).load(function(){
 											
 										<div class="margin_bottom_float form_order_button_div">
 											<button class="btn form_order_button">
-											Запись на бесплатный вебинар
+											Хочу на бесплатный вебинар
 											</button>
 										</div>
 										<div class="margin_bottom_float form_order_form">
-											<h3>Запись на бесплатный вебинар:</h3>
+											<h3>Хочу на бесплатный вебинар:</h3>
 										
 										 <?php echo do_shortcode('[contact-form-7 id="1052" title="Форма на бесплатный тренинг"]'); 	
 											
@@ -247,11 +260,11 @@ $(document).load(function(){
 											
 											<div class="margin_bottom_float form_order_button_div">
 											<button class="btn form_order_button">
-											Запись на вебинар
+											Хочу на вебинар
 											</button>
 										</div>
 										<div class="margin_bottom_float form_order_form">
-											<h3>Запись на вебинар:</h3>
+											<h3>Хочу на вебинар:</h3>
 										
 										 <?php echo do_shortcode('[contact-form-7 id="1142" title="Форма на вебинар"]'); 	
 										}else{
@@ -261,22 +274,22 @@ $(document).load(function(){
 											
 										<div class="margin_bottom_float form_order_button_div">
 											<button class="btn form_order_button">
-											Запись на бесплатный тренинг
+											Хочу на бесплатный тренинг
 											</button>
 										</div>
 										<div class="margin_bottom_float form_order_form">
-											<h3>Запись на бесплатный тренинг:</h3>
+											<h3>Хочу на бесплатный тренинг:</h3>
 										
 										 <?php echo do_shortcode('[contact-form-7 id="1052" title="Форма на бесплатный тренинг"]'); 	
 										}else{?>
 											
 											<div class="margin_bottom_float form_order_button_div">
 											<button class="btn form_order_button">
-											Запись на тренинг
+											Хочу на тренинг
 											</button>
 										</div>
 										<div class="margin_bottom_float form_order_form">
-											<h3>Запись на тренинг:</h3>
+											<h3>Хочу на тренинг:</h3>
 											
 											
 											
@@ -293,7 +306,10 @@ $(document).load(function(){
 										
 									</div>
 									<?php } ?>
-                                   	<?php echo the_content();?>
+                                   	<?php 
+							
+										
+										echo the_content();?>
 									</div>
 					  </div>
                         </div><!--/.blog-item-->
@@ -307,26 +323,29 @@ $(document).load(function(){
 										<h2>
 											Осталось:
 										</h2>
-										<div class="digit">
+										<div class=digit_big>
+											<div class="digit">
 										
+											</div>
+											<div class="digit_counters">
+												<span>дней</span>
+												<span>часов</span>
+												<span>минут</span>
+												<span>секунд</span>
+											</div>
 										</div>
-										<div class="digit_counters">
-											<span>дней</span>
-											<span>часов</span>
-											<span>минут</span>
-											<span>секунд</span>
-										</div>
+									
 										<?php } ?>
 									</div>
 																			<?php if (in_category('free_tren') && in_category('vebinaryi')) {?>		
 											
 										<div class="margin_bottom_float form_order_button_div">
 											<button class="btn form_order_button">
-											Запись на бесплатный вебинар
+											Хочу на бесплатный вебинар
 											</button>
 										</div>
 										<div class="margin_bottom_float form_order_form">
-											<h3>Запись на бесплатный вебинар:</h3>
+											<h3>Хочу на бесплатный вебинар:</h3>
 										
 										 <?php echo do_shortcode('[contact-form-7 id="1052" title="Форма на бесплатный тренинг"]'); 	
 											
@@ -335,11 +354,11 @@ $(document).load(function(){
 											
 											<div class="margin_bottom_float form_order_button_div">
 											<button class="btn form_order_button">
-											Запись на вебинар
+											Хочу на вебинар
 											</button>
 										</div>
 										<div class="margin_bottom_float form_order_form">
-											<h3>Запись на вебинар:</h3>
+											<h3>Хочу на вебинар:</h3>
 										
 										 <?php echo do_shortcode('[contact-form-7 id="1142" title="Форма на вебинар"]'); 	
 										}else{
@@ -349,22 +368,22 @@ $(document).load(function(){
 											
 										<div class="margin_bottom_float form_order_button_div">
 											<button class="btn form_order_button">
-											Запись на бесплатный тренинг
+											Хочу на бесплатный тренинг
 											</button>
 										</div>
 										<div class="margin_bottom_float form_order_form">
-											<h3>Запись на бесплатный тренинг:</h3>
+											<h3>Хочу на бесплатный тренинг:</h3>
 										
 										 <?php echo do_shortcode('[contact-form-7 id="1052" title="Форма на бесплатный тренинг"]'); 	
 										}else{?>
 											
 											<div class="margin_bottom_float form_order_button_div">
 											<button class="btn form_order_button">
-											Запись на тренинг
+											Хочу на тренинг
 											</button>
 										</div>
 										<div class="margin_bottom_float form_order_form">
-											<h3>Запись на тренинг:</h3>
+											<h3>Хочу на тренинг:</h3>
 											
 											
 											
@@ -408,7 +427,11 @@ $(document).load(function(){
 						}?>
                     </div><!--/.col-md-8-->
 
-                <?php get_sidebar(); ?>     
+                <?php
+				if ($breakpostion===false){
+										get_sidebar(); 
+										}
+							?>     
 
             </div><!--/.row-->
 

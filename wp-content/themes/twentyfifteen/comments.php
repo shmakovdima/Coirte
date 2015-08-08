@@ -72,7 +72,7 @@ i
  
     $args = array(
       'comment_notes_after' => '',
-      'comment_field' => ' <div class="col-sm-7"><div class="form-group"><label>Сообщение *</label><textarea id="comment" name="comment" class="comment-form form-control" cols="45" rows="8" aria-required="true" placeholder="Текст сообщения..."></textarea></div>',
+      'comment_field' => ' <div class="col-xm-12"><div class="form-group"><label>Сообщение *</label><textarea id="comment" name="comment" class="comment-form form-control" cols="45" rows="8" aria-required="true" placeholder="Текст сообщения..."></textarea></div>',
       'label_submit' => 'Отправить',
       'fields' => apply_filters('comment_form_default_fields', $fields)
     );

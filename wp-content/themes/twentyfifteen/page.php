@@ -21,9 +21,6 @@ $params = array(
 get_header(); ?>
 <!-- container -->
 		
-	
-	
-
 	 <section id="blog" class="container container_padding wow fadeInDown">
 	<?php if (function_exists('dimox_breadcrumbs')) dimox_breadcrumbs(); ?> 
         <div class="center padding_top">

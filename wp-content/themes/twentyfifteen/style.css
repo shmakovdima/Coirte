@@ -1001,8 +1001,9 @@ font-weight: 400;
 }
 
 .seld {
-	margin-top: 50px;
-	margin-bottom: 40px;
+	font-size: 30px;
+    margin-top: 50px;
+    margin-bottom: 20px;
 }
 
 .partners ul li {
@@ -1140,3 +1141,30 @@ padding:0 4px 5px;
 	display: none;
 }
 
+
+/*new (08.08.15)*/
+
+.widget.search {
+	margin-bottom: 25px;
+}
+
+ .btn.last_button, .btn.open_send_message{
+	width: 100%;
+}
+
+.form_order_button {
+	margin: 0 auto;
+    display: block;
+}
+.digit {
+	margin: 0 auto;
+    overflow: hidden;
+}
+
+.comment-form {
+	padding: 15px;
+}
+
+a img {
+	float: left;
+} 

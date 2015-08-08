@@ -27,7 +27,7 @@ jQuery(function(){
 
 
 <!-- container -->
-	<div class="container wow fadeInDown">		
+	<div class="container wow fadeInDown" id ="blog">		
 			<?php if (function_exists('dimox_breadcrumbs')) dimox_breadcrumbs(); ?> 
 		
 
