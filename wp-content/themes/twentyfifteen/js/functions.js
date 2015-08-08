@@ -158,6 +158,14 @@ $(".slidenumber4").fadeIn("400");
 	}
 
 	$(document).ready(function() {
+		
+		$(".form_order_button").click(function(){
+			$(".form_order_button_div").css("display","none");
+			$(".form_order_form").fadeIn("400");
+		});		
+		
+	
+		
 		$body = $(document.body);
 		$window = $(window);
 		$sidebar = $('#sidebar').first();
@@ -176,9 +184,6 @@ $(".slidenumber4").fadeIn("400");
 		for (var i = 1; i < 6; i++) {
 			setTimeout(resizeAndScroll, 100 * i);
 		}
-
-
-
 	});
 
 })(jQuery);

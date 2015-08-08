@@ -22,7 +22,7 @@
 							
 							
 							<!-- Вывод телефона-->
-							<?php $posts = get_posts("category_name=contactphone&orderby=date&numberposts=1&post_status=publish"); ?>
+							<?php $posts = get_posts("category_name=contact_phone&orderby=date&numberposts=1&post_status=publish"); ?>
 							<?php if ($posts) : ?>
 							<nobr>
 							<i class="fa fa-phone-square"></i>
@@ -184,11 +184,30 @@
 		</div>
 
 	</footer>	
+<div class="overflow">
+	<div class = "overflow_item">
+		 <div class="deletesign"></div>
+		<div>
+
+		<h2 class="send_rass">
+			Подписка на рассылку:
+		</h2>
+						
+		</div>
+		<?php  echo do_shortcode('[contact-form-7 id="1109" title="Подписаться на нас"]'); ?>
+	</div>
+	<div class="background_block">
+		
+	</div>
+</div>
+
+
+
 	
     <script src="<?php echo get_template_directory_uri(); ?>/js/bootstrap.min.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.prettyPhoto.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/jquery.isotope.min.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/js/main.js"></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/js/main.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/wow.min.js"></script>
 	<script src="<?php echo get_template_directory_uri(); ?>/js/chosen.jquery.min.js"></script>
 

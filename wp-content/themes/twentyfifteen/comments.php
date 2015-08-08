@@ -21,7 +21,7 @@ i
 
 
 <?php if (comments_open()) { ?>
-   <h2 class="comments_caption" id="comments_title"><?php comments_number( 'Нет комментариев', 'Один комментарий', 'Кол-во комментариев: % ' ); ?></h2> 
+   <h2 class="comments_caption" id="comments"><?php comments_number( 'Нет комментариев', 'Один комментарий', 'Кол-во комментариев: % ' ); ?></h2> 
       <?php
         function verstaka_comment($comment, $args, $depth){
           $GLOBALS['comment'] = $comment; ?>
@@ -34,7 +34,7 @@ i
                                 <h3><?php printf(__('%s'), get_comment_author_link()) ?></h3>
                                 <h4><?php printf(__('%1$s в %2$s'), get_comment_date(),  get_comment_time()) ?></h4>
 					 			<?php if ($comment->comment_approved == '0') : ?>
-                					<em><?php _e('Ваш комментарий ожидает модерацию.') ?></em>
+                					<em><?php _e('Ваш отзыв ожидает модерацию.') ?></em>
                 					<br>
               					<?php endif; ?>
                                 <?php comment_text() ?>

@@ -55,7 +55,7 @@ get_header(); ?>
 									}?>
                                     <span class="text-center"><i class="fa fa-user"></i> <a class="text-center" href="<?php echo home_url();?>/author/<?php echo $who[nickname]; ?>"><?php echo $who[display_name]; ?></a></span>
 									<span class="text-center">Кол-во оставшихся мест: <?php echo $mest; ?></a></span>
-									<?php if ($sold>0){?>
+									<?php if ($sold!=""){?>
 										<span class="text-center">Стоимость сегодня: <?php echo $sold; ?></a></span>
 									<?php }?>
 									<?php	

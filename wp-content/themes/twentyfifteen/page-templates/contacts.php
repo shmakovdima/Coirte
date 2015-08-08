@@ -16,7 +16,7 @@ get_header(); ?>
 <!-- Google Maps -->
 <script src="https://maps.googleapis.com/maps/api/js?key=&amp;sensor=false&amp;extension=.js"></script> 
 <script src="<?php echo get_template_directory_uri(); ?>/js/google-map.js"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/sweet-alert.min.js"></script>
+
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.maskedinput-1.2.2.js"></script>
 <script type="text/javascript">
 jQuery(function(){
@@ -24,7 +24,7 @@ jQuery(function(){
 });
 
 </script>
-<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/sweet-alert.css">
+
 
 <!-- container -->
 	<div class="container wow fadeInDown">		
@@ -70,7 +70,7 @@ jQuery(function(){
 					<?php endif; ?>	
 					<?php wp_reset_query(); ?>
 					
-					<?php $posts = get_posts("category_name=contactphone&orderby=date&numberposts=1&post_status=publish"); ?>
+					<?php $posts = get_posts("category_name=contact_phone&orderby=date&numberposts=1&post_status=publish"); ?>
 					<?php if ($posts) : ?>
 					<h4>Наш телефон</h4>
 					<?php foreach ($posts as $post) : setup_postdata ($post); ?>

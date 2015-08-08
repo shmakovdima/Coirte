@@ -950,16 +950,13 @@ a.accordion-toggle  i{
 
 
 #vopros_psih {
-	
-	
 	color: black;
 	padding-top: 160px;
 	padding-bottom: 200px;
 	overflow: hidden;
-}
-#vopros_psih {
+
   
-  background: url(../images/vopros.jpg)  no-repeat;
+  background: url(images/mountains.jpg)  no-repeat;
 	  background-size: cover!important;
 	background-position: top center;
 
@@ -2567,4 +2564,216 @@ shortcodes page css
 }
 .margin_bottom_float h3 {
 	margin-bottom: 10px!important;
+}
+
+
+/*Фон слайдера*/
+#slider {
+position:relative;
+margin-left: 17px;
+margin-right: 23px;
+	margin-bottom: 30px;
+}
+
+/*Стиль кнопки слайдера*/
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+width:28px;
+height:28px;
+border: 2px solid #26A69A;
+position:absolute;
+top:-12px;
+margin-left:-12px;
+z-index:200;
+	border-radius: 50%;
+background:url("images/whenever.png") center no-repeat; 
+	background-size: cover;
+}
+
+
+/*Полоска заполнителя слайдера*/
+.ui-widget-header {
+background:#26A69A;
+height:2px;
+left:1px;
+top:1px;
+position:absolute;
+}
+
+.ui-slider-horizontal {
+	height: 4px;	
+}
+
+.ui-widget-content {
+	border: none;
+}
+
+.ui-state-disabled, .ui-widget-content .ui-state-disabled, .ui-widget-header .ui-state-disabled {
+	opacity: 1;
+}
+
+.lefted_counters {
+	margin-left: 15px;
+	margin-bottom: 17px!important;
+}
+
+.header_life {
+	margin-bottom: 40px;
+	
+}
+
+.overflowed {
+	overflow: hidden;
+}
+
+.header_life span {
+	position: relative;
+	float: left;
+	font-size: 24px;
+}
+
+.digit_counters {
+	position: relative;
+	float: left;
+	clear: both;
+}
+
+.digit_counters span {
+	margin-left: 44px;
+	padding-bottom: 3px;
+}
+
+.digit_counters span+span {
+	margin-left: 74px;
+}
+.digit_counters span+span+span {
+	margin-left: 69px;
+}
+
+.digit_counters span+span+span+span {
+	margin-left: 59px;
+}
+
+.header_life h2 {
+	font-size: 30px;
+	margin-left: 4px;
+}
+
+.margin_bottom_float {
+	
+}
+
+.form_order_button_div {
+	margin-top: 30px;
+}
+
+.overflow {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	width: 100%;
+	display: none;
+	z-index: 10000;
+}
+
+.overflow .background_block {
+	opacity: 0.8;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	height: 100%;
+	width: 100%;
+	background: black;
+	z-index: 11;
+}
+
+.overflow_item {
+	position: relative;
+	margin: 0 auto;
+	margin-top: 10%;
+	width: 400px;
+	padding: 30px;
+
+	z-index: 20;
+	background: #fff;
+	box-shadow: 0 0 10px rgba(0,0,0,0.7);
+	border-radius: 7px ;
+	-webkit-transition: all 0.3s ease;
+     -moz-transition: all 0.3s ease;
+       -o-transition: all 0.3s ease;
+      -ms-transition: all 0.3s ease;
+          transition: all 0.3s ease;
+	z-index: 20;
+}
+
+.send_rass {
+	position: relative;
+	font-size: 28px ;
+	padding-bottom: 10px;
+}
+
+.deletesign {
+	top: 20px;
+	right: 20px;
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	opacity: 0.7;
+	cursor: pointer;
+	background: url(images/delete_sign-128.png) no-repeat;
+	background-size: contain;
+	-webkit-transition: all 0.4s ease;
+     -moz-transition: all 0.4s ease;
+       -o-transition: all 0.4s ease;
+      -ms-transition: all 0.4s ease;
+          transition: all 0.4s ease;
+          z-index: 200;
+}
+.overflow_item .deletesign {
+	top: 20px;
+	right: 20px;
+	width: 25px;
+	height: 25px;
+
+}
+
+.deletesign:hover{
+	opacity: 1;
+	transform: rotate(90deg);
+/*Firefox*/
+-moz-transform: rotate(90deg);
+/*Microsoft Internet Explorer*/
+-ms-transform: rotate(90deg);
+/*Chrome, Safari*/
+-webkit-transform: rotate(90deg);
+/*Opera*/
+-o-transform: rotate(90deg);
+}
+
+.open_send_message {
+	float: left;
+	margin-bottom: 20px;
+}
+
+.cntSeparator {
+	margin-top: 30px;
+}
+
+.last_button {
+	margin-bottom: 15px;
+}
+
+.comment_full {
+	font-size: 18px;
+	line-height: 28px;
+	text-align: justify;
+}
+
+.comment_full .entry-meta.small.muted span {
+	font-size: 22px!important;
+	margin-bottom: 10px;
+}
+
+.margin_top_40px {
+	margin-top: 70px;
 }

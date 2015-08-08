@@ -64,28 +64,44 @@
 <?php endif; ?>	
 
  <aside class="col-md-4">
+	 				
                     <div class="widget search">
 						 <form role="form" role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
                              <input title="Поиск" type="text" class="form-control search_box" autocomplete="off" placeholder="Найти..." name="s">     						
                          </form>
                     </div><!--/.search-->
+					<div>
+						<button class ="btn open_send_message">
+							<i class="fa fa-envelope-o"></i>
+							Подписаться на нашу рассылку
+						</button>
+						<a class="animated4s btn last_button" href="<?php home_url();?>/vopros-psihologu" title="Задайте вопрос психологу"><i class="fa fa-question"></i>Задайте вопрос психологу</a>
+					</div>
     				
     				<div class="widget categories">
                         <h2>Ближайшие тренинги</h2>
-                     
-                           
 								<?php echo $nexttren; ?>
 							</div>
-                                         
-                    </div><!--/.recent comments-->
-                     <div class="widget categories akc">
+					</div>
+					<div class="widget categories">
+                        <h2>Отзывы о нас</h2>
+                        <div class="row">
+                            <div class="col-sm-12">
+                              <?php kama_recent_comments(3, 120); ?>
+								<a class="animated4s btn reviews" href="<?php home_url();?>/otzyivyi" title="Просмотреть отзывы о нас">Просмотреть отзывы о нас</a>
+                            </div>
+							
+                        </div>                     
+                    </div><!--/.recent comments-->                                         
+
+                    <div class="widget categories akc">
                         <h2>Наши акции</h2>
 						<?php $posts = get_posts("category_name=skidks&orderby=date&numberposts=1&post_status=publish"); ?>
 								<?php if ($posts) : ?>
 								<?php foreach ($posts as $post) : setup_postdata ($post); ?>
-								 <a href="http://populartrening.ru/category/trenings" title="Акции">
+								 <a href="<?php echo $post->post_content; ?> " title="Акции">
 								<?php echo "<img align=left src='".(wp_get_attachment_image_src(get_post_thumbnail_id( $post->ID ), full)[0])."' width=100% height=auto>"; ?>
-								</a><p><?php echo $post->post_content; ?> </p>
+								</a>
 								<?php endforeach; ?>
 								<?php endif; ?>	
                     </div><!--/.recent comments-->

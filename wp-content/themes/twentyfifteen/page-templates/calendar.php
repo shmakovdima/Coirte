@@ -36,10 +36,13 @@ jQuery(function(){
         </div>
         <div class="blog">
             <div class="row">
+				
                  <div class="col-md-8">
 					
-
-					 <?php echo do_shortcode('[calendar]'); ?>
+					 <?php echo do_shortcode('[my_calendar]'); ?>
+					
+					 
+					
 					 
 	                </div><!--/.col-md-8-->
 

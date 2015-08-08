@@ -9,9 +9,6 @@ jQuery(function($) {'use strict',
 		});
 	});
 
-					
-	
-
 
 	// accordian
 	$('.accordion-toggle').on('click', function(){
@@ -97,8 +94,18 @@ jQuery(function($) {'use strict',
 });
 
 $(document).ready(function(){
+	
+	
+	$(".deletesign").click(function(){
+		$(".overflow").fadeOut("400");
+	});
+	
+	
+	$(".open_send_message").click(function(){
+		$(".overflow").fadeIn("400");
+	});
+	
 	$(".select_answer").click(function(){
-		
 		$(".select_block").removeClass("active");
 		var id = $(this).prop("id");
 		$(".sel"+id).addClass("active");

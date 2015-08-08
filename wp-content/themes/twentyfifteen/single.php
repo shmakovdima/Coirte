@@ -8,6 +8,7 @@
  */
 
 
+
 $default_query = clone $wp_query;
 if ( have_posts() ) {
 	foreach ($posts as $post) : setup_postdata ($post); 
@@ -16,7 +17,7 @@ if ( have_posts() ) {
 	endforeach;
 }
 
- $posts = get_posts("category_name=nexttren&order=asc&orderby=date&numberposts=5&post_status=publish"); $counters=0; $nexttren=""; $nexttren.= 	'<div class="panel-group" id="accordion3">';?>
+$posts = get_posts("category_name=nexttren&order=asc&orderby=date&numberposts=5&post_status=publish"); $counters=0; $nexttren=""; $nexttren.= 	'<div class="panel-group" id="accordion3">';?>
 <?php if ($posts) : ?>
 <?php foreach ($posts as $post) : setup_postdata ($post); ?>
 	<?php 	
@@ -47,8 +48,6 @@ if ( have_posts() ) {
 								}else{
 									$nexttren.= '<div id="collapseTwo'.get_the_ID().'1" class="panel-collapse collapse">';
 								}
-                            
-
 
                            $nexttren.= ' <div class="panel-body">
                                   <div class="media accordion-inner">
@@ -83,6 +82,8 @@ if ( function_exists( 'wpcf7_enqueue_scripts' ) ) {
 get_header(); ?>
 
 <script src="<?php echo get_template_directory_uri(); ?>/js/sweet-alert.min.js"></script>
+
+
 
 <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.maskedinput-1.2.2.js"></script>
 <script type="text/javascript">
@@ -149,7 +150,7 @@ $(document).load(function(){
 									}?>
                                     <span class="text-center"><i class="fa fa-user"></i> <a class="text-center" href="<?php echo home_url();?>/author/<?php echo $who[nickname]; ?>"><?php echo $who[display_name]; ?></a></span>
 									<span class="text-center">Кол-во оставшихся мест: <?php echo $mest; ?></a></span>
-									<?php if ($sold>0){?>
+									<?php if ($sold!=""){?>
 										<span class="text-center">Стоимость сегодня: <?php echo $sold; ?></a></span>
 									<?php }?>
 									<?php	
@@ -160,9 +161,7 @@ $(document).load(function(){
 
 									<?	
 									}
-									
 									?>
-								
                                     <span><i class="fa fa-comment"></i> <a href="<?php echo get_permalink(); ?>#comments"><?php comments_number( 'Нет комментариев', 'Один комментарий', '% комментариев' ); ?></a></span>
                                  	
                                 </div>
@@ -171,11 +170,127 @@ $(document).load(function(){
 									
                                     <h1><?php echo the_title() ?></h1>
 									<?php
-									if (($cat[0]->parent == 30) || ($cat[0]->parent == 39) && ($robo!=="")){
+									if (($cat[0]->parent == 30) || ($cat[0]->parent == 39) && ($robo!="")){
+										
+										
+									if (date('d.m.Y', strtotime($date)) == $date) {
+										
+										
+										$datestart =  get_the_date('d.m.Y'); 
+										
+										$currentday = date("d.m.Y");
+										//echo alex_date_dif($datestart,$date,".",0);
+										$sliderlength = alex_date_dif($datestart,$date,".",0);
+										$difference = alex_date_dif($datestart,$currentday,".",0);
+										
 										?>
-									<div class="margin_bottom_float">
-										 <h3>Запись на тренинг:</h3>
-										<?php echo do_shortcode($robo); ?>
+									
+									<div class = "header_life">
+									<h3 class="lefted_counters">
+											Осталось:
+										</h3>
+									<div id = "slider"></div>
+									<div>
+									
+									
+										
+									</div>
+									<script>
+										
+										$(function() {
+												$("#slider").slider({
+											value: 0, //Значение, которое будет выставлено слайдеру при загрузке
+		min: 0, //Минимально возможное значение на ползунке
+		max: <?php echo $sliderlength; ?>, //Максимально возможное значение на ползунке
+		value: <?php echo $difference; ?> ,
+		step: 1, //Шаг, с которым будет двигаться ползунок
+		animate: true,
+		range: "min",
+		disable: true
+		});	
+		$("#slider").slider("disable");
+						<?php if ($date>$currentday) {			?>		
+		 $(".digit").countdown({
+          image: "<?php echo get_template_directory_uri(); ?>/images/digits.png",
+          format: "dd:hh:mm:ss",
+			 endTime: new Date("<?php echo  date("m/d/y",strtotime($date));?>")
+        });					
+									<?php	}	?>
+
+										});
+									
+									</script>
+								
+									</div>	
+										<?php 
+										
+										}
+										?>
+									
+									
+								
+									
+										<?php if (in_category('free_tren') && in_category('vebinaryi')) {?>		
+											
+										<div class="margin_bottom_float form_order_button_div">
+											<button class="btn form_order_button">
+											Запись на бесплатный вебинар
+											</button>
+										</div>
+										<div class="margin_bottom_float form_order_form">
+											<h3>Запись на бесплатный вебинар:</h3>
+										
+										 <?php echo do_shortcode('[contact-form-7 id="1052" title="Форма на бесплатный тренинг"]'); 	
+											
+										} else {  
+											if (in_category('vebinaryi')) {?>
+											
+											<div class="margin_bottom_float form_order_button_div">
+											<button class="btn form_order_button">
+											Запись на вебинар
+											</button>
+										</div>
+										<div class="margin_bottom_float form_order_form">
+											<h3>Запись на вебинар:</h3>
+										
+										 <?php echo do_shortcode('[contact-form-7 id="1142" title="Форма на вебинар"]'); 	
+										}else{
+											
+											
+											if (in_category('free_tren')) {?>
+											
+										<div class="margin_bottom_float form_order_button_div">
+											<button class="btn form_order_button">
+											Запись на бесплатный тренинг
+											</button>
+										</div>
+										<div class="margin_bottom_float form_order_form">
+											<h3>Запись на бесплатный тренинг:</h3>
+										
+										 <?php echo do_shortcode('[contact-form-7 id="1052" title="Форма на бесплатный тренинг"]'); 	
+										}else{?>
+											
+											<div class="margin_bottom_float form_order_button_div">
+											<button class="btn form_order_button">
+											Запись на тренинг
+											</button>
+										</div>
+										<div class="margin_bottom_float form_order_form">
+											<h3>Запись на тренинг:</h3>
+											
+											
+											
+											
+											
+									
+											
+											
+											
+											
+											
+											<?php	echo do_shortcode($robo); }} }?>
+										
+										
 									</div>
 									<?php } ?>
                                    	<?php echo the_content();?>
@@ -183,11 +298,87 @@ $(document).load(function(){
 					  </div>
                         </div><!--/.blog-item-->
 									<?php
-									if (($cat[0]->parent == 30) || ($cat[0]->parent == 39) && ($robo!=="")){
+									if (($cat[0]->parent == 30) || ($cat[0]->parent == 39) && ($robo!="")){
 										?>
-									<div>
-										 <h2 class="sold">Запись на тренинг:</h2>
-										<?php echo do_shortcode($robo); ?>
+									
+									<div class="header_life overflowed">
+										
+											<?php if ($date>$currentday) {			?>		
+										<h2>
+											Осталось:
+										</h2>
+										<div class="digit">
+										
+										</div>
+										<div class="digit_counters">
+											<span>дней</span>
+											<span>часов</span>
+											<span>минут</span>
+											<span>секунд</span>
+										</div>
+										<?php } ?>
+									</div>
+																			<?php if (in_category('free_tren') && in_category('vebinaryi')) {?>		
+											
+										<div class="margin_bottom_float form_order_button_div">
+											<button class="btn form_order_button">
+											Запись на бесплатный вебинар
+											</button>
+										</div>
+										<div class="margin_bottom_float form_order_form">
+											<h3>Запись на бесплатный вебинар:</h3>
+										
+										 <?php echo do_shortcode('[contact-form-7 id="1052" title="Форма на бесплатный тренинг"]'); 	
+											
+										} else {  
+											if (in_category('vebinaryi')) {?>
+											
+											<div class="margin_bottom_float form_order_button_div">
+											<button class="btn form_order_button">
+											Запись на вебинар
+											</button>
+										</div>
+										<div class="margin_bottom_float form_order_form">
+											<h3>Запись на вебинар:</h3>
+										
+										 <?php echo do_shortcode('[contact-form-7 id="1142" title="Форма на вебинар"]'); 	
+										}else{
+											
+											
+											if (in_category('free_tren')) {?>
+											
+										<div class="margin_bottom_float form_order_button_div">
+											<button class="btn form_order_button">
+											Запись на бесплатный тренинг
+											</button>
+										</div>
+										<div class="margin_bottom_float form_order_form">
+											<h3>Запись на бесплатный тренинг:</h3>
+										
+										 <?php echo do_shortcode('[contact-form-7 id="1052" title="Форма на бесплатный тренинг"]'); 	
+										}else{?>
+											
+											<div class="margin_bottom_float form_order_button_div">
+											<button class="btn form_order_button">
+											Запись на тренинг
+											</button>
+										</div>
+										<div class="margin_bottom_float form_order_form">
+											<h3>Запись на тренинг:</h3>
+											
+											
+											
+											
+											
+									
+											
+											
+											
+											
+											
+											<?php	echo do_shortcode($robo); }} }?>
+										
+										
 									</div>
 			
 									<div>
@@ -210,11 +401,7 @@ $(document).load(function(){
 				comments_template();
 			endif;
 			?>
-                        
-                      
 
-
-                        
 						<?php endwhile;
 						}else{
 							echo "<h2 class='text-center'>Простите, но в этой рубрике нет пока постов</h2>";
@@ -229,19 +416,5 @@ $(document).load(function(){
 
     </section><!--/#blog-->
 
-
-
-
-
-
-
-
-
-
-
-
-	
-
-	
 
 <?php get_footer(); ?>

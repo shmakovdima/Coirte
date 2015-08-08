@@ -16,6 +16,8 @@
 
 
 //Вырубание Contact form, где не надо
+define('WP_CACHE', true); //Added by WP-Cache Manager
+define( 'WPCACHEHOME', '/home/c/coirte/populartrening.ru/public_html/wp-content/plugins/wp-super-cache/' ); //Added by WP-Cache Manager
 define('WPCF7_LOAD_JS', false);
 define('WPCF7_LOAD_CSS', false);
 

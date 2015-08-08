@@ -30,6 +30,20 @@
  *
  * @since Twenty Fifteen 1.0
  */
+function alex_date_dif($date1,$date2,$sep,$echo){
+    $a1 = explode($sep, $date1);
+    $a2 = explode($sep, $date2);
+    $t1 = mktime(0,0,0,$a1[1],$a1[0],$a1[2]);
+    $t2 = mktime(0,0,0,$a2[1],$a2[0],$a2[2]);
+    $adf = ($t2 - $t1) / 86400; 
+    if($echo==1){
+        echo $adf;
+    }else{
+        return $adf;
+    }
+}
+
+
 
 function kama_excerpt($args=''){
 	global $post;
@@ -116,7 +130,7 @@ function kama_recent_comments($limit=10, $ex=45, $cat=0, $echo=1, $gravatar=''){
 		LEFT JOIN $wpdb->posts p ON (com.comment_post_ID = p.ID) {$join}
 	WHERE comment_approved = '1'
 		AND comment_type = '' {$and}
-	ORDER BY comment_date DESC
+	ORDER BY RAND()
 	LIMIT $limit"; 
 
 	$results = $wpdb->get_results($sql);
@@ -129,13 +143,54 @@ function kama_recent_comments($limit=10, $ex=45, $cat=0, $echo=1, $gravatar=''){
 		$leight = (int) iconv_strlen( $comtext, 'utf-8' );
 		if($leight > $ex) $comtext =  iconv_substr($comtext,0,$ex, 'UTF-8').' …';
 		$out .= "\n<div class='single_comments'>$grava<p>{$comtext}
-		</p><div class='entry-meta small muted'><span>Написал ".strip_tags($comment->comment_author)." на <a href='".get_comment_link($comment->comment_ID)." title='{$comment->post_title}'>{$comment->post_title}</a></span></div></div>";
+		</p><div class='entry-meta small muted'><span>".strip_tags($comment->comment_author)." на <a href='".get_comment_link($comment->comment_ID)." title='{$comment->post_title}'>{$comment->post_title}</a></span></div></div>";
 	}
 	
 
 	if ($echo) echo $out;
 	else return $out;
 }
+
+
+
+function kama_recent_comments_full($limit=10, $ex=45, $cat=0, $echo=1, $gravatar=''){
+	global $wpdb;
+	if($cat){
+		$IN = (strpos($cat,'-')===false)?"IN ($cat)":"NOT IN (".str_replace('-','',$cat).")";
+		$join = "LEFT JOIN $wpdb->term_relationships rel ON (p.ID = rel.object_id)
+		LEFT JOIN $wpdb->term_taxonomy tax ON (rel.term_taxonomy_id = tax.term_taxonomy_id)";
+		$and = "AND tax.taxonomy = 'category'
+		AND tax.term_id $IN";
+	}
+	$sql = "SELECT comment_ID, comment_post_ID, comment_content, post_title, guid, comment_author, comment_author_email
+	FROM $wpdb->comments com
+		LEFT JOIN $wpdb->posts p ON (com.comment_post_ID = p.ID) {$join}
+	WHERE comment_approved = '1'
+		AND comment_type = '' {$and}
+	ORDER BY RAND()
+	LIMIT $limit"; 
+
+	$results = $wpdb->get_results($sql);
+	$gravatar = false;
+	$out = '';
+	foreach ($results as $comment){
+		if($gravatar)
+			$grava = '<div class="pull-left post_comments "><img src="http://www.gravatar.com/avatar/'. md5($comment->comment_author_email) .'?s=$gravatar&default=" alt="" width="'. $gravatar .'" height="'. $gravatar.'" /></div>';
+		$comtext = strip_tags($comment->comment_content);
+		$leight = (int) iconv_strlen( $comtext, 'utf-8' );
+		if($leight > $ex) $comtext =  iconv_substr($comtext,0,$ex, 'UTF-8').' …';
+		$out .= "\n <div class='media comment_section comment_full'>$grava<div class='entry-meta small muted'><span>".strip_tags($comment->comment_author)." на <a href='".get_comment_link($comment->comment_ID)." title='{$comment->post_title}'>{$comment->post_title}</a></span></div><p>{$comtext}
+		</p></div>";
+	}
+	
+
+	if ($echo) echo $out;
+	else return $out;
+}
+
+
+
+
 
 function getCurrentCatID(){  
   global $wp_query;  

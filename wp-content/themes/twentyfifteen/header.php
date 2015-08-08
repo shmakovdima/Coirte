@@ -33,6 +33,7 @@
 	
 	
 	<!-- core CSS -->
+	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/jquery-ui-1.10.4.custom.min.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/sweet-alert.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/chosen.css">
     <link href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.min.css" rel="stylesheet">
@@ -41,8 +42,13 @@
     <link href="<?php echo get_template_directory_uri(); ?>/css/prettyPhoto.css" rel="stylesheet">
     <link href="<?php echo get_template_directory_uri(); ?>/css/main.css" rel="stylesheet">
     <link href="<?php echo get_template_directory_uri(); ?>/css/responsive.css" rel="stylesheet">
+	<script src="<?php echo get_template_directory_uri(); ?>/js/sweet-alert.min.js"></script>
 	
+	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/sweet-alert.css">
+
 	
+	<script src="<?php echo get_template_directory_uri(); ?>/js/jquery-ui-1.10.3.custom.min.js"></script>
+	<script src="<?php echo get_template_directory_uri(); ?>/js/counter.js"></script>
 	<?php wp_head(); ?>
 </head>
 <body class="homepage"<?php body_class(); ?>>
@@ -53,7 +59,7 @@
                 <div class="row">
                     <div class="col-sm-6 col-xs-4">
                         <div class="top-number"><p>
-							<?php $posts = get_posts("category_name=contactphone&orderby=date&numberposts=1&post_status=publish"); ?>
+							<?php $posts = get_posts("category_name=contact_phone&orderby=date&numberposts=1&post_status=publish"); ?>
 							<?php if ($posts) : ?>
 							<nobr>
 							<i class="fa fa-phone-square"></i>
@@ -152,7 +158,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="<?php echo get_home_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/logoA.png" width="185" alt="logo"></a>
+                    <a class="navbar-brand" href="<?php echo get_home_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/logoA.png" width="185" alt="Темари — тренинги, семинары и не только"></a>
                 </div>
 				
                 

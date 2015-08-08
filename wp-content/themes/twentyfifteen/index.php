@@ -134,25 +134,51 @@ get_header(); ?>
         <a class="next hidden-xs" href="#main-slider" data-slide="next">
             <i class="fa fa-chevron-right"></i>
         </a>
-					 
-		  
 			</div>
-	
-	
 			<div class="col-sm-5">
+					<div>
+						<button class ="btn open_send_message">
+							<i class="fa fa-envelope-o"></i>
+							Подписаться на нашу рассылку
+						</button>					
+						<a class="animated4s btn last_button" href="<?php home_url();?>/vopros-psihologu" title="Задайте вопрос психологу"><i class="fa fa-question"></i>Задайте вопрос психологу</a>
+					</div>
 					<div class="center">
 						<h2 class="section-heading">Ближайшие тренинги:</h2>
 					</div>
 						<?php echo $nexttren;?>
 				</div>
 			</div>	
+		</div>
+			<div class="row margin_top_40px">
+							<section>
+								<header class="center">
+									<h2>Наши акции</h2>
+								</header>
+								<?php $posts = get_posts("category_name=skidks&orderby=date&numberposts=3&post_status=publish"); ?>
+								<?php if ($posts) : ?>
+								<?php foreach ($posts as $post) : setup_postdata ($post); ?>
+								<div class="col-sm-4"><a href="<?php echo $post->post_content; ?>" title="Акции">
+								<?php echo "<img align=left src='".(wp_get_attachment_image_src(get_post_thumbnail_id( $post->ID ), full)[0])."' width=100% height=auto>"; ?>
+								</a></div>
+								<?php endforeach; ?>
+								<?php endif; ?>	
+							</section>
+					</div>
+		<div class="row">
+
 			 <div class="col-sm-12">
-                                <?php echo $aboutcompany;?>
+                  <?php echo $aboutcompany;?>
             </div>	
 		</div>
+			
 				
 		
     </section><!--/#main-slider-->
+	
+	
+	
+	
 	<section id="vopros_psih" class="wow fadeInDown" >
 		<div id="background-image">
 			
@@ -160,12 +186,7 @@ get_header(); ?>
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 wow fadeInDown">
-                    <div class="media contact-info ">
-                        <div class="media-body">						
-							<h2><a class="animated4s" href="<?php home_url();?>/vopros-psihologu" title="Задайте вопрос психологу">Задайте вопрос психологу!</a></h2>
-                        </div>
-						
-                    </div>
+                       	  <?php echo do_shortcode("[my_calendar]"); ?>
                 </div>
 				
             </div>
@@ -177,7 +198,8 @@ get_header(); ?>
 
 	<div id="footer-wrapper">
 				<section id="footer" class="container">
-					<div class="row">
+				
+					<div class="row ">	
 						<div class="col-sm-7">
 							<section>
 								<header class="center">
@@ -202,23 +224,19 @@ get_header(); ?>
 								
 								</ul>
 								<h3>
-									<a href="http://populartrening.ru/category/news" title="Новости">Прочитать все новости</a>
+									<a class="btn" href="http://populartrening.ru/category/news" title="Новости">Прочитать все новости</a>
 								</h3>
 							</section>
 						</div>
 						<div class="col-sm-5">
 							<section>
-								<header class="center">
-									<h2>Наши акции</h2>
+								<header class="center margit_top_40px">
+									<h2>Отзывы о нас</h2>
 								</header>
-								<?php $posts = get_posts("category_name=skidks&orderby=date&numberposts=1&post_status=publish"); ?>
-								<?php if ($posts) : ?>
-								<?php foreach ($posts as $post) : setup_postdata ($post); ?>
-								<a href="http://populartrening.ru/category/trenings" title="Акции">
-								<?php echo "<img align=left src='".(wp_get_attachment_image_src(get_post_thumbnail_id( $post->ID ), full)[0])."' width=100% height=auto>"; ?>
-								</a><p><?php echo $post->post_content; ?> </p>
-								<?php endforeach; ?>
-								<?php endif; ?>	
+									<?php kama_recent_comments(5, 220); ?>
+									<a class="animated4s btn reviews" href="<?php home_url();?>/otzyivyi" title="Просмотреть отзывы о нас">Просмотреть отзывы о нас</a>
+                            
+								
 							</section>
 						</div>
 					</div>
@@ -236,7 +254,7 @@ get_header(); ?>
 			<div class="row cycle-slideshow" data-cycle-fx=carousel data-cycle-timeout=1000 data-cycle-carousel-visible=6 data-cycle-carousel-fluid=true data-cycle-slides="div">
 			<?php
 				$parametri = array(
-			
+				'role' => 'Administrator',
 				'exclude' => array(
 					'nicename' =>'shmakovdima',
 				)
